@@ -10,7 +10,7 @@ p {
 }
 </style>
 <title>수강</title>
-</head>
+</head> 
 <body>
 	<div style="width: 1200px; height: 500px; margin: auto;">
 		<div style="text-align: right; position: relative;">미리담기</div>
