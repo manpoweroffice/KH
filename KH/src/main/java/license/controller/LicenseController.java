@@ -15,14 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LicenseController {
  
-    @RequestMapping(value = "/license.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/career/license.do", method = RequestMethod.GET)
     public ModelAndView fileForm() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("licenseForm");
+        mv.setViewName("career/licenseForm");
         return mv;
     }
      
-    @RequestMapping(value = "/license.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/career/license.do", method = RequestMethod.POST)
     public String fileSubmit(LicenseDTO dto) {
         MultipartFile uploadfile = dto.getUploadfile();
         if (uploadfile != null) {
@@ -35,7 +35,7 @@ public class LicenseController {
                 // output.write(fileData);
                  
                 // 2. File »ç¿ë
-                File file = new File("C:/images/" + fileName);
+                File file = new File("C:/upload/" + fileName);
                 uploadfile.transferTo(file);
             } catch (IOException e) {
                 e.printStackTrace();
