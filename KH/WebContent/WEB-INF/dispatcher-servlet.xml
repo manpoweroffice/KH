@@ -36,7 +36,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean id="Class_Basket" class="regster.Class_Basket" />
+	<bean id="Class_Basket" class="register.Class_Basket" />
 	
 	<!-- <bean id="regCourse" class="controller.CourseController" /> -->
 	

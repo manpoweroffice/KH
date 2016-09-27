@@ -35,7 +35,7 @@ p {
 				</tr>
 			</c:if>
 
-			<c:forEach var="article" items="${lecList}">
+			<c:forEach var="lecture" items="${lecList}">
 				<tr height="30">
 					<td align="center" width="100">${lecture. }</td>
 					<td align="center" width="100">${lecture. }</td>
@@ -71,17 +71,17 @@ p {
 				</tr>
 			</c:if>
 
-			<c:forEach var="article" items="${lecList}">
+			<c:forEach var="serchLec" items="${serchLec}">
 				<tr height="30">
-					<td align="center" width="100">${lecture. }</td>
-					<td align="center" width="100">${lecture. }</td>
-					<td align="center" width="200">${lecture. }</td>
-					<td align="center" width="50">${lecture. }</td>
-					<td align="center" width="50">${lecture. }</td>
-					<td align="center" width="100">${lecture. }</td>
-					<td align="center" width="500">${lecture. }</td>
-					<td align="center" width="50">${lecture. }</td>
-					<td align="center" width="50">${lecture. }</td>
+					<td align="center" width="100">${serchLec. }</td>
+					<td align="center" width="100">${serchLec. }</td>
+					<td align="center" width="200">${serchLec. }</td>
+					<td align="center" width="50">${serchLec. }</td>
+					<td align="center" width="50">${serchLec. }</td>
+					<td align="center" width="100">${serchLec. }</td>
+					<td align="center" width="500">${serchLec. }</td>
+					<td align="center" width="50">${serchLec. }</td>
+					<td align="center" width="50">${serchLec. }</td>
 				</tr>
 			</c:forEach>
 		</table>
