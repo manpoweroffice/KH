@@ -38,9 +38,9 @@
 
 	<bean id="Class_Basket" class="regster.Class_Basket" />
 	
-	<bean id="regCourse" class="controller.CourseController" />
+	<!-- <bean id="regCourse" class="controller.CourseController" /> -->
 	
-	 <context:component-scan base-package="license.controller"/>
+	 <context:component-scan base-package="license"/>
      
    
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>

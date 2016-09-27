@@ -1,4 +1,4 @@
-package license.model;
+package license;
  
 import org.springframework.web.multipart.MultipartFile;
  
