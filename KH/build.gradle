@@ -20,4 +20,8 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-jdbc', version: '4.2.7.RELEASE'
     compile group: 'com.mchange', name: 'c3p0', version: '0.9.5.2'
     
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.2.8'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.2'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.2.7.RELEASE'
+    
 }
