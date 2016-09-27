@@ -9,6 +9,17 @@ public class SelfCommand {
 	private String content3;
 	private String content4;
 	private Timestamp s_date;
+	
+	private SelfCommand(){}
+	
+	public SelfCommand(String stu_num, String content1, String content2, String content3, String content4){
+		this.stu_num=stu_num;
+		this.content1=content1;
+		this.content2=content2;
+		this.content3=content3;
+		this.content4=content4;
+	}
+	
 	public String getStu_num() {
 		return stu_num;
 	}
