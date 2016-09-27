@@ -6,6 +6,7 @@
 </head>
 <body>
 	<a href="regCourse/regCourse.do">/regCourse/regCourse.do</a><br>
+	<a href="profile/basicForm.do">/profile/basicForm.do</a><br>
 
 </body>
 </html>
