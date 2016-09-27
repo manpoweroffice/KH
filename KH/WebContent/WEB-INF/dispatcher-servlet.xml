@@ -31,6 +31,10 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
+	<bean id="dao" class="profile.MemberDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
