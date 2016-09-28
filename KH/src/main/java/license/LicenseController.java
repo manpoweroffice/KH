@@ -1,10 +1,10 @@
-package license.controller;
+package license;
  
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
  
-import license.model.LicenseDTO;
+import license.LicenseDTO;
  
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

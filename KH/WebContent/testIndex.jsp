@@ -9,7 +9,8 @@
 	<a href="profile/basicForm.do">/profile/basicForm.do</a><br>
 
 	<a href="register/Class_Basket.do">/register/Class_Basket.do</a><br>
-	<a href="self/inroduction.do">self/inroduction.do</a><br>
-	
+
+	<a href="self/introduction.do">self/introduction.do</a><br>
+
 </body>
 </html>
