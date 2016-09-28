@@ -2,23 +2,9 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="self">
 	
-	<mapper namespace="selfCon">
+	<insert id="insertA" parameterType="self.Self">
+	insert into self_intro values(#{stu_num}, #{content1}, #{content2}, #{content3}, #{content4}, sysdate)</insert>
 	
-	<insert id="insert" parameterType="self.SelfCommand">
-	insert into self_intro values (#{stu_num}, #{content1}, #{content2}, #{content3}, #{content4}, sysdate)</insert>
-	
-	<update id="update" parameterType="self.SelfCommand">
-		update self_intro
-		<set>
-			<if test ="content1 != null">content1=#{content1},</if>
-			<if test ="content2 != null">content2=#{content2},</if>
-			<if test ="content3 != null">content3=#{content3},</if>
-			<if test ="content4 != null">content4=#{content4},</if>
-			<if test ="s_date != null">s_date=sysdate</if>
-		</set>
-		where stu_num=#{stu_num}
-	</update>
-
-	<select id="selectAll" resultType="self.SelfCommand">select * from self_intro</select> 
 </mapper>
