@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
 	$(function(){
 		$("ul.menu li").hover(function(){
@@ -40,46 +42,58 @@
 		text-decoration: none;
 		color: #000000;
 	}
-	
-	#two {
+	* {
+		margin: 0;
 		padding: 0;
-		margin: 0 auto;
+		list-style: none;
+	}
+	#two{
 		position: absolute;
 		right: 20px;
 		top: 70px;
 	}
-
-	#two>ul {
-		list-style: none;
+	
+	ul.menu li {
+		float: left;
+		width: 140px;
+		position: relative;
+		z-index: 1;
+		zoom: 1;
 	}
-
-	#two>ul>li {
-		border: 1px solid;
-		display: inline;
-		text-transform: uppercase;
-		padding: 5 0;
+	
+	ul.menu li a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		line-height: 48px;
+		text-align:center;
 		color: #000000;
-	}
-	#two>ul>li>a {
-		padding: 5 40;
 		text-decoration: none;
-		color: #000000;
+		position: relative;
 	}
-	#two>ul>li>a:hover{
-		padding: 5 40;
-		background-color: #000000;
+	ul.menu li a:hover {
+		display: block;
+		width: 100%;
+		height: 100%;
+		line-height: 48px;
+		text-align:center;
+		color: #000000;
+		text-decoration: none;
+		position: relative;
+		background: #000000;
 		color:#FFFFFF;
 	}
+			
 	ul.sub {
 		display: none;
 		background: #FFFFFF;
-		border: 2px solid;
 	}
-
+	
 	ul.sub li {
 		float: none;
 	}
 	
+
 </style>
 <body>
 	<a href="#">
@@ -105,11 +119,12 @@
 			</c:choose>
 	    </div>
 	</nav>
-	<nav> 
+	<div id="container">
+	<div id="textline">
 	    <div id="two">
 			<c:choose>
 				<c:when test="${memId.equals('admin')}">
-					<ul>
+					<ul class="menu">
 					  	<li><a href="#">신상관리</a>
 					  		<ul class="sub">
 								<li><b><a href="#">신상정보</a></b></li>
@@ -117,23 +132,29 @@
 							</ul>
 						</li><!--
 					 --><li><a href="#">학사관리</a></li><!--
-					 --><li><a href="#">이력관리</a></li><!--
-					 --><li><a href="#">자기소개서관리</a></li><!--
-					 --><li><a href="#">취업정보</a></li><!--
+					 --><li><a href="#">이력관리</a></li>
+					 	<li><a href="#">자기소개서관리</a></li>
+						<li><a href="#">취업정보</a></li><!--
 					 --><li><a href="#">커뮤니티</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
-					<ul>
-					  	<li><a href="#">신상관리</a></li><!--
+					<ul class="menu">
+					  	<li><a href="#">신상관리</a>
+					  		<ul class="sub">
+								<li><a href="#">신상정보</a></li>
+								<li><a href="#">학력정보</a></li>
+							</ul>
+						</li><!--
 					 --><li><a href="#">학사관리</a></li><!--
-					 --><li><a href="#">이력관리</a></li><!--
-					 --><li><a href="#">자기소개서관리</a></li><!--
-					 --><li><a href="#">취업정보</a></li><!--
+					 --><li><a href="#">이력관리</a></li>
+					 <li><a href="#">자기소개서관리</a></li>
+					 <li><a href="#">취업정보</a></li><!--
 					 --><li><a href="#">커뮤니티</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>
 	    </div>
-	 </nav>   
+	    </div>
+	    </div>  
 </body>

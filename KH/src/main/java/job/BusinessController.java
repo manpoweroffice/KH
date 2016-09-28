@@ -64,6 +64,6 @@ public class BusinessController {
 		mav.addObject("count",count);
 		mav.addObject("bussList", bussList);
 		mav.addObject("pagingHtml", pagingHtml);
-		
+		return mav;
 	}
 }
