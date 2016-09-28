@@ -30,7 +30,7 @@ public class SelfController {
 	
 	private SelfDAO selfDao;  
 	
-	public void setselfDao(SelfDAO dao) {
+	public void setSelfDao(SelfDAO dao) {
 		this.selfDao = dao;
 	}
 	

@@ -9,7 +9,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:annotation-config />
-
+	<!-- <mvc:resources location="/resources" mapping="/resources/**"></mvc:resources> -->
+	
 	<!-- 프로퍼티스 파일 읽어오기 -->
 	<context:property-placeholder location="classpath:db.properties" />
 	<!-- 커넥션풀연결 -->
@@ -82,6 +83,7 @@
 
 	<!-- 로그인 -->
 	<bean class="main.LoginController" />
-	
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/" /> 
 </beans>
 

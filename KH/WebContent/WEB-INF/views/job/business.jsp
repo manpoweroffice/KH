@@ -60,7 +60,7 @@
 	</tr>
 	</c:if>
 	<tr>
-	<td align="center"><input type="button" value="글쓰기"></td>
+	<td align="center"><input type="button" value="글쓰기" onclick="document.location.href='busswrite.do'"></td>
 	</tr>
 	</table>
 </body>
