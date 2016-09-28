@@ -29,10 +29,60 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+			</list>
+		</property>
+	</bean>
+	
 	<bean id="dao" class="profile.MemberDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	
+	<context:component-scan base-package="license.controller" />
 
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<!-- Tiles -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tilesdef.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+	</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  		<property name="prefix" value="/WEB-INF/views/" />
+  		<property name="suffix" value=".jsp" />
+  		<property name="order" value="2" />
+  	</bean>
+	
+	<!-- 자기소개서 -->
+	<bean id="self" class="self.SelfController" p:selfDao-ref="selfDao"/>
+	<bean id="selfDao" class="self.SelfDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 이력관리 -->
+	<bean class="license.EducationController"/>
+	<bean class="license.LicenseController"/>
+	<bean class="license.LicenseDTO"/>
+	
+	<!-- 준영이 -->
+	<bean id="bussDao" class="job.BusinessDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 
 </beans>
