@@ -9,8 +9,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:annotation-config />
-	<!-- <mvc:resources location="/resources" mapping="/resources/**"></mvc:resources> -->
-	
 	<!-- 프로퍼티스 파일 읽어오기 -->
 	<context:property-placeholder location="classpath:db.properties" />
 	<!-- 커넥션풀연결 -->
@@ -40,10 +38,24 @@
 		</property>
 	</bean>
 
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- profile -->
+	<bean id="studentDao" class="profile.StudentDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
+	
+	<!-- <bean id="image" class="profile.imageUploadController"/> -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-	<!-- Tiles -->
+	<!-- Tiles -->  
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
@@ -53,10 +65,6 @@
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</bean>
 	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
-		<property name="order" value="1" />
-	</bean>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   		<property name="prefix" value="/WEB-INF/views/" />
   		<property name="suffix" value=".jsp" />
