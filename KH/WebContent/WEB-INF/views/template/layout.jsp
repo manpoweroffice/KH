@@ -5,7 +5,7 @@
 <title>KH인트라넷</title>
 <style>
 	.layoutTable{
-		width: 1600px;
+		width: 1600px; 
 	}
 </style>
 </head>
