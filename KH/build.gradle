@@ -24,4 +24,5 @@ dependencies {
     compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.2.2'
     compile group: 'org.springframework', name: 'spring-orm', version: '4.2.7.RELEASE'
     
+
 }
