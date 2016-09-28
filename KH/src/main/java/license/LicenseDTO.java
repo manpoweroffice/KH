@@ -3,33 +3,35 @@ package license;
 import org.springframework.web.multipart.MultipartFile;
  
 public class LicenseDTO {
-   
-	private String name, pwd, title, content, fileName;
+	
+   	private String kinds, publisher, dates, evidence, fileName;
     private MultipartFile uploadfile;
 	
-    public String getName() {
-		return name;
+    LicenseDTO(){}
+    
+	public String getKinds() {
+		return kinds;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setKinds(String kinds) {
+		this.kinds = kinds;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getPublisher() {
+		return publisher;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
 	}
-	public String getTitle() {
-		return title;
+	public String getDates() {
+		return dates;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setDates(String dates) {
+		this.dates = dates;
 	}
-	public String getContent() {
-		return content;
+	public String getEvidence() {
+		return evidence;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setEvidence(String evidence) {
+		this.evidence = evidence;
 	}
 	public String getFileName() {
 		return fileName;
@@ -43,6 +45,9 @@ public class LicenseDTO {
 	public void setUploadfile(MultipartFile uploadfile) {
 		this.uploadfile = uploadfile;
 	}
- 
-
+	@Override
+	public String toString() {
+		return "LicenseDTO [kinds=" + kinds + ", publisher=" + publisher + ", dates=" + dates + ", evidence=" + evidence
+				+ ", fileName=" + fileName + ", uploadfile=" + uploadfile + "]";
+	}
 }

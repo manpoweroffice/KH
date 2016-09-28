@@ -38,8 +38,6 @@
 
 	<bean id="Class_Basket" class="register.Class_Basket" />
 	
-	<!-- <bean id="regCourse" class="controller.CourseController" /> -->
-	
 	 <context:component-scan base-package="license"/>
      
    
