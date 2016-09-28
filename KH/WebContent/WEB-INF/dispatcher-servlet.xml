@@ -37,13 +37,6 @@
 			</list>
 		</property>
 	</bean>
-	
-	<bean id="dao" class="profile.MemberDAO">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean>
-	
-	<context:component-scan base-package="license.controller" />
-
 
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
@@ -75,6 +68,7 @@
 	</bean>
 	
 	<!-- 이력관리 -->
+	<context:component-scan base-package="license.controller" />
 	<bean class="license.EducationController"/>
 	<bean class="license.LicenseController"/>
 	<bean class="license.LicenseDTO"/>
