@@ -29,14 +29,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-<<<<<<< HEAD
 
-<!-- 	<bean id="memberdao" class="profile.MemberDAO"> 
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean> -->
-
-=======
->>>>>>> branch 'master' of https://github.com/manpoweroffice/KH.git
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
