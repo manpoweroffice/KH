@@ -2,7 +2,7 @@ package self;
 
 import java.sql.Timestamp;
 
-public class SelfCommand {
+public class Self {
 	private String stu_num;
 	private String content1;
 	private String content2;
@@ -10,14 +10,15 @@ public class SelfCommand {
 	private String content4;
 	private Timestamp s_date;
 	
-	private SelfCommand(){}
+	public Self(){}
 	
-	public SelfCommand(String stu_num, String content1, String content2, String content3, String content4){
+	public Self(String stu_num, String content1, String content2, String content3, String content4, Timestamp s_date){
 		this.stu_num=stu_num;
 		this.content1=content1;
 		this.content2=content2;
 		this.content3=content3;
 		this.content4=content4;
+		this.s_date=s_date;
 	}
 	
 	public String getStu_num() {
