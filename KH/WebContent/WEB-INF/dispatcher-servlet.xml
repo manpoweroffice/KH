@@ -25,10 +25,9 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:sql/*.xml" />
 	</bean>
-	
-	<!-- profile -->
-	<bean id="dao" class="profile.StudentDao">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
 	<bean id="messageSource"
@@ -45,19 +44,17 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<bean id="profile" class="profile.ProfileController" p:dao-ref="dao"/>
-<!-- 	<bean id="Class_Basket" class="register.Class_Basket" /> -->
-
-<!-- 	<bean id="regCourse" class="controller.CourseController" /> -->
-
-<!-- 	<context:component-scan base-package="license.controller" /> -->
-
-
+	
+	<!-- profile -->
+	<bean id="studentDao" class="profile.StudentDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
+	<bean id="image" class="profile.imageUploadController"/>
+	
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
-	<!-- 자기소개서 -->
-<!-- 	<bean id="self" class="self.SelfController" /> -->
 
 
 </beans>
