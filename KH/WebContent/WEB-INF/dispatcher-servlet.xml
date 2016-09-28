@@ -29,6 +29,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
@@ -79,4 +80,8 @@
 	</bean>
 	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 
+	<!-- 로그인 -->
+	<bean class="main.LoginController" />
+	
 </beans>
+
