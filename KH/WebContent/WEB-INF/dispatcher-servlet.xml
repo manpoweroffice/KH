@@ -28,9 +28,9 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 
-	<bean id="dao" class="profile.MemberDAO">
+<!-- 	<bean id="memberdao" class="profile.MemberDAO"> 
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean>
+	</bean> -->
 
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -60,6 +60,14 @@
 	<bean id="dao" class="self.SelfDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+
+
+	<!-- 로그인 -->
+	<bean class="main.LoginController" />
+	
+	
+
+
 
 </beans>
 
