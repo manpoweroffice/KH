@@ -35,6 +35,11 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
+	<bean id="bussDao" class="job.BusinessDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
