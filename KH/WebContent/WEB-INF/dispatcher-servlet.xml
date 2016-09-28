@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
@@ -13,12 +15,10 @@
 	<!-- 커넥션풀연결 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
 		<property name="user" value="${jdbc.user}" />
 		<property name="password" value="${jdbc.password}" />
-
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -50,12 +50,46 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
-	<bean id="image" class="profile.imageUploadController"/>
-	
+	<!-- <bean id="image" class="profile.imageUploadController"/> -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
+	<!-- Tiles -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tilesdef.xml</value>
+			</list>
+		</property>
+		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  		<property name="prefix" value="/WEB-INF/views/" />
+  		<property name="suffix" value=".jsp" />
+  		<property name="order" value="2" />
+  	</bean>
+	
+	<!-- 자기소개서 -->
+	<bean id="self" class="self.SelfController" p:selfDao-ref="selfDao"/>
+	<bean id="selfDao" class="self.SelfDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 이력관리 -->
+	<context:component-scan base-package="license.controller" />
+	<bean class="license.EducationController"/>
+	<bean class="license.LicenseController"/>
+	<bean class="license.LicenseDTO"/>
+	
+	<!-- 준영이 -->
+	<bean id="bussDao" class="job.BusinessDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 
-
+	<!-- 로그인 -->
+	<bean class="main.LoginController" />
+	
 </beans>
 
