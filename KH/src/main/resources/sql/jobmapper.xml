@@ -3,27 +3,27 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="job">
+<mapper namespace="job">  
 <insert id="insertBuss" parameterType="job.BusinessVo">
-insert into busslist values(#{num},#{bussnm},#{cer},#{rel},#{sar},sysdate)
+insert into busslist(num,bussnm,cer,rel,sal,content,reg_date) values(buss_num.NEXTVAL,#{bussnm},#{cer},#{rel},#{sal},#{content},sysdate)
 </insert>
 <update id="updateBuss" parameterType="job.BusinessVo">
-update  busslist set bussnm=#{bussnm},cer=#{cer},rel=#{rel},sar=#{sar},reg_date=sysdate where num=#{num}
+update  busslist set bussnm=#{bussnm},cer=#{cer},rel=#{rel},sal=#{sal},content=#{content},reg_date=sysdate where num=#{num}
 </update>
 <delete id="deleteBuss" parameterType="int">
 delete from busslist where num=#{num}
 </delete>
 <select id="listjob" parameterType="map" resultType="job.BusinessVo">
-select*from (
-select a.*, rownum r from( select *from busslist
+select * from (
+select a.*, rownum r from ( select * from busslist
 <where>
-<if test="keyWord!=''and keyFiled=='bussnm'">
+<if test="keyWord!=''and keyField=='bussnm'">
  bussnm like '%'||#{keyWord}||'%' 
 </if>
-<if test="keyWord!=''and keyFiled=='cer'">
+<if test="keyWord!=''and keyField=='cer'">
  cer like '%'||#{keyWord}||'%' 
 </if>
-<if test="keyWord!=''and keyFiled=='rel'">
+<if test="keyWord!=''and keyField=='rel'">
  rel like '%'||#{keyWord}||'%' 
 </if>
 <if test="keyWord!='' and keyField=='all'">
@@ -32,8 +32,8 @@ bussnm like '%'||#{keyWord}||'%' or
  rel like '%'||#{keyWord}||'%'
 </if>
 </where>
- Order by num desc)a)
- <![CDATA[where r>=#{start} and r<=#{end}]]> 
+  order by num desc) a ) 
+ <![CDATA[ where r>=#{start} and r<=#{end}]]> 
 </select>
 <select id="selectCount" parameterType="map" resultType="int">
 select count(*) from busslist
