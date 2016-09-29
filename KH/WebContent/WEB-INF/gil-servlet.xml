@@ -55,5 +55,13 @@
 		</property>
 	</bean>
 
+	<!-- 로그인 -->
+	<bean class="main.LoginController" />
+	
+	
+	<bean class="register.Class_Basket" />
+	
+	
+	
 </beans>
 

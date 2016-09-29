@@ -55,5 +55,11 @@
 		</property>
 	</bean>
 
+	<!-- 자기소개서 -->
+	<bean id="self" class="self.SelfController" p:selfDao-ref="selfDao"/>
+	<bean id="selfDao" class="self.SelfDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 </beans>
 

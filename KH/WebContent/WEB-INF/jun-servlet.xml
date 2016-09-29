@@ -55,5 +55,14 @@
 		</property>
 	</bean>
 
+	<!-- 준영이 -->
+	<bean id="bussDao" class="job.BusinessDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
+	
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/" /> 
+
 </beans>
 
