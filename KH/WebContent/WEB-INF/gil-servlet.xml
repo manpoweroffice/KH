@@ -57,8 +57,7 @@
 
 	<!-- 로그인 -->
 	<bean class="main.LoginController" />
-	<mvc:annotation-driven/>
-	<mvc:resources mapping="/resources/**" location="/resources/" /> 
+	
 	
 	<bean class="register.Class_Basket" />
 	
