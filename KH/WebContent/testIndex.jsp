@@ -6,11 +6,13 @@
 </head>
 <body> 
 
-	<a href="profile/form.do">/profile/basicForm.do</a><br>
-	<a href="register/Class_Basket.do">/register/Class_Basket.do</a><br>
-	<a href="self/introduction.do">self/introduction.do</a><br>
-	
-	<a href="login/login.do">Login/login.do</a><br>
+
+	<a href="yeji/profile/form.do">/profile/basicForm.do</a><br>
+	<a href="gil/register/Class_Basket.do">/register/Class_Basket.do</a><br>
+
+	<a href="song/self/introduction.do">self/introduction.do</a><br>
+
+	<a href="gil/login/login.do">Login/login.do</a><br>
 
 </body>
 </html>
