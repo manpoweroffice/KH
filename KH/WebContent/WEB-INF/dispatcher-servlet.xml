@@ -28,33 +28,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
-
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>messages.validation</value>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-	 
-	<!-- profile -->   
-	<bean id="studentDao" class="profile.StudentDao" >  
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
-	</bean>
 	
-	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
-	
-	<!-- <bean id="image" class="profile.imageUploadController"/> -->
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-
 	<!-- Tiles -->  
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
@@ -65,12 +39,37 @@
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
 	</bean>
 	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean> 
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   		<property name="prefix" value="/WEB-INF/views/" />
   		<property name="suffix" value=".jsp" />
   		<property name="order" value="2" />
   	</bean>
+  	  
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+			</list>
+		</property>
+	</bean>
 	
+	<!-- profile -->
+ 	<bean id="studentDao" class="profile.StudentDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
+	
+	<!-- <bean id="image" class="profile.imageUploadController"/> -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 	<!-- 자기소개서 -->
 	<bean id="self" class="self.SelfController" p:selfDao-ref="selfDao"/>
 	<bean id="selfDao" class="self.SelfDAO">
