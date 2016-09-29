@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOne" resultType="self.Self" parameterType="String">
 	select * from self_intro where stu_num=#{stu_num}</select>
 	
-	<select id="selectAll" resultType="self.Self">
+	<select id="selectAll" resultType="self.Self"> 
 	select * from self_intro
 	</select>
 	

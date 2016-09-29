@@ -18,7 +18,7 @@ public class SelfController {
 	
 	public void setSelfDao(SelfDAO dao) {
 		this.selfDao = dao;
-	}
+	} 
 
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView form(@ModelAttribute Self self, HttpServletRequest request){

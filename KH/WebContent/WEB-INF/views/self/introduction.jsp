@@ -14,7 +14,7 @@ $(document).ready(function(){
 		$('.con').slideUp(300);
 	});
 });
-</script>
+</script> 
 <style>
 .con{
 	position: absolute;
