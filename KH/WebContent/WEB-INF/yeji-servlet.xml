@@ -54,6 +54,17 @@
 			</list>
 		</property>
 	</bean>
+
+	<!-- profile -->
+ 	<bean id="studentDao" class="profile.StudentDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
+	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
+	
+	<!-- <bean id="image" class="profile.imageUploadController"/> -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
 </beans>
 

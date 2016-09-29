@@ -19,6 +19,52 @@
 	</filter-mapping>
 	
 	<!-- 설정한 서블렛네임 -servlet의 이름을 가진 파일을 자동으로 찾아서 사용한다. -->
+	
+	<servlet>
+		<servlet-name>chan</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>chan</servlet-name>
+		<url-pattern>/chan/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>gil</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>gil</servlet-name>
+		<url-pattern>/gil/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>jun</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jun</servlet-name>
+		<url-pattern>/jun/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>song</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>song</servlet-name>
+		<url-pattern>/song/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>yeji</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>yeji</servlet-name>
+		<url-pattern>/yeji/*</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
