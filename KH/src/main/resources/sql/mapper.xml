@@ -7,6 +7,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOne" parameterType="String" resultType="profile.StudentCommand">
 	select * from stu_info where stu_num=#{stu_num}
 	</select>
-
-	
-</mapper>   
+</mapper>    

@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,14 +24,12 @@ public class BusinessController {
 	}
 	private int pageSize=10;
 	private int blockCount=10;
-	/*@ModelAttribute
+	@ModelAttribute
 	public BusinessVo formbacking(){
 		return new BusinessVo();
 	}
-	List<BusinessVo> busslist =bussDao.getBussList();
-	*/
 	
-	@RequestMapping(value="/job/business")
+	@RequestMapping("/job/business.do")
 	public ModelAndView form(@RequestParam(value="pageNum",defaultValue="1")int currentPage,
 			@RequestParam(value="keyField",defaultValue="")String keyField,
 			@RequestParam(value="keyWord",defaultValue="")String keyWord
@@ -65,5 +65,11 @@ public class BusinessController {
 		mav.addObject("bussList", bussList);
 		mav.addObject("pagingHtml", pagingHtml);
 		return mav;
+	}
+	
+	@RequestMapping("/job/busswrite.do")
+	public String form(){
+		System.out.println("³Ñ¾î¿È");
+		return "job/busswrite";
 	}
 }

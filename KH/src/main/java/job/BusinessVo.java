@@ -5,27 +5,37 @@ import java.sql.Timestamp;
 public class BusinessVo {
 
 	private int num;//글번호
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public int getNum() {
 		return num;
 	}
 
 	public void setNum(int num) {
-		this.num = num;
+		this.num = num;   
 	}
 	private String bussnm; //회사명
 	private String cer; //자격요건
 	private String rel; //관련직종
 	private String sar; //연봉
+	private String content;//글 내용
 	private Timestamp reg_date; //등록일
 	
 	public BusinessVo(){}
 	
-	public BusinessVo(int num,String bussnm,String cer,String rel,String sar,Timestamp reg_date){
+	public BusinessVo(int num,String bussnm,String cer,String rel,String sar,String content,Timestamp reg_date){
 		this.num=num;
 		this.bussnm=bussnm;
 		this.cer=cer;
 		this.rel=rel;
 		this.sar=sar;
+		this.content=content;
 		this.reg_date=reg_date;
 	}
 	

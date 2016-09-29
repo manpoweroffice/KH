@@ -11,10 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentController {
 	
 	private StudentDao studentDao;
-	
+	  
 	public void setStudentDao(StudentDao studentDao) {
 		this.studentDao = studentDao;
 	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
 			return "profile/form";
