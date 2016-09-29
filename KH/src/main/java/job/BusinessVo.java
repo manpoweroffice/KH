@@ -18,7 +18,7 @@ public class BusinessVo {
 	}
 
 	public void setNum(int num) {
-		this.num = num;
+		this.num = num;   
 	}
 	private String bussnm; //회사명
 	private String cer; //자격요건

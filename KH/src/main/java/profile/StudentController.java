@@ -15,6 +15,7 @@ public class StudentController {
 	public void setStudentDao(StudentDao studentDao) {
 		this.studentDao = studentDao;
 	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
 			return "profile/form";
