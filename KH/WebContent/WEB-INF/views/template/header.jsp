@@ -97,7 +97,7 @@
 </style>
 <body>
 	<a href="#">
-		<img alt="rogo" src="../image/rogo2.jpg" id="rogo">
+		<img alt="rogo" src="../../image/rogo2.jpg" id="rogo">
 	</a>
 	<nav>
 	    <div id="one">
@@ -119,8 +119,6 @@
 			</c:choose>
 	    </div>
 	</nav>
-	<div id="container">
-	<div id="textline">
 	    <div id="two">
 			<c:choose>
 				<c:when test="${memId.equals('admin')}">
@@ -155,6 +153,4 @@
 				</c:otherwise>
 			</c:choose>
 	    </div>
-	    </div>
-	    </div>  
 </body>
