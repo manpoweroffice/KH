@@ -60,6 +60,9 @@
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
+	
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/" /> 
 
 </beans>
 

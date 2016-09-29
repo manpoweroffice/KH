@@ -68,11 +68,6 @@
 
 	<!-- 로그인 -->
 	<bean class="main.LoginController" />
-	<mvc:annotation-driven />
-	<mvc:resources mapping="/resources/**" location="/resources/" />
-
-
-
 
 </beans>
 
