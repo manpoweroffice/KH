@@ -5,18 +5,18 @@
 <title>KH인트라넷</title>
 <style>
 	.layoutTable{
-		width: 1600px; 
+		width: 1600px;
 	}
 </style>
 </head>
-<body>
+<body class="no">
 	<table class="layoutTable">
 		<tr>
 			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
 		<tr>
-			<td width="20%"><tiles:insertAttribute name="side" /></td>
-			<td width="80%"><tiles:insertAttribute name="body" /></td>
+			<td width="400px"><tiles:insertAttribute name="side" /></td>
+			<td width="1200px"><tiles:insertAttribute name="main" /></td>
 		</tr>
 		<tr>
 			<td><tiles:insertAttribute name="footer" /></td>
