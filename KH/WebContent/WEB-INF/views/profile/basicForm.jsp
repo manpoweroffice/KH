@@ -52,8 +52,15 @@ font-size: 12;
 <td>주소</td><td >${command.address } </td>
 <td> 공개여부</td>
 <td >
-<input type="radio" name="check" value="공개">공개 
-<input type="radio" name="check" value="비공개">비공개
+ 
+<c:if test="${command.p_check=='Y'}">
+  <input type="radio" name ="p_check" value="Y" checked>공개
+  <input type="radio" name ="p_check" value="N">비공개
+</c:if>
+<c:if test="${command.p_check=='N'}">
+  <input type="radio" name ="p_check" value="Y" >공개
+  <input type="radio" name ="p_check" value="N" checked>비공개
+</c:if>
 </td> 
 </tr>
 </table>

@@ -18,8 +18,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="h_tob!=null" >h_tob=#{h_tob},</if>
 	<if test="h_job!=null" >h_job=#{h_job},</if>
 	<if test="h_location!=null">h_location=#{h_location},</if>
-	<if test="h_income!=null">h_income=#{h_income}</if>
+	<if test="h_income!=null">h_income=#{h_income},</if>
+	p_check=#{p_check}
 	</set>
 	 where stu_num=#{stu_num} 
-	</update>  
+	</update> 
+	
+	<select id="select_c" parameterType="String" resultType="certificate.CertificateCommand">
+	select * from stu_info where stu_num=#{stu_num}
+	</select>
+	
+	<update id="update_state" parameterType="certificate.CertificateCommand">
+	update stu_info set	college_state='졸업' where stu_num=#{stu_num}
+	</update>
+   
 </mapper>    

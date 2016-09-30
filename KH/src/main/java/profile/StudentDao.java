@@ -11,6 +11,7 @@ public class StudentDao extends SqlSessionDaoSupport {
 	public void update(StudentCommand command){
 		getSqlSession().update("stuInfo.update",command);
 	}
+	
 
 }
        

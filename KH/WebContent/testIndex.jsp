@@ -7,7 +7,9 @@
 <body> 
 
 
-	<a href="yeji/profile/form.do">/profile/basicForm.do</a><br>
+	<a href="yeji/profile/basicForm.do">/profile/basicForm.do</a><br>
+	
+	<a href="yeji/certificate/certificateForm_f.do">/certificate.do</a><br>
 	
 	<a href="gil/register/Class_Basket.do">/register/Class_Basket.do</a><br>
 
