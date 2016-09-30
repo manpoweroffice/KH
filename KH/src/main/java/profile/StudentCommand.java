@@ -49,6 +49,19 @@ public class StudentCommand {
 		this.h_location = h_location;
 		this.h_income = h_income;
 	}
+	public StudentCommand( String stu_num,String mil_service,String last_rank, String tour_of_duty, String exemp
+			,String h_tob,String h_job,String h_location,String h_income) {
+		super();
+		this.stu_num = stu_num;
+		this.mil_service = mil_service;
+		this.last_rank = last_rank;
+		this.tour_of_duty = tour_of_duty;
+		this.exemp = exemp;
+		this.h_tob = h_tob;
+		this.h_job = h_job;
+		this.h_location = h_location;
+		this.h_income = h_income;
+	}
 	public String getStu_num() {
 		return stu_num;
 	}

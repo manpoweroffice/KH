@@ -62,7 +62,8 @@
 	
 	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
 	
-	<!-- <bean id="image" class="profile.imageUploadController"/> -->
+<!-- 	<bean id="image" class="profile.imageUploadController"/> -->
+	
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 

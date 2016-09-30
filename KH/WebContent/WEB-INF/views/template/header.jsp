@@ -15,7 +15,7 @@
 </script>
 <style>
 	#rogo{
-		width : 400;
+		width : 300;
 	}
 	#one {
 		font-size : 12px;
@@ -50,7 +50,7 @@
 	#two{
 		position: absolute;
 		right: 20px;
-		top: 70px;
+		top: 30px;
 	}
 	
 	ul.menu li {
