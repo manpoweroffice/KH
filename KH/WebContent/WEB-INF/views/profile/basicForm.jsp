@@ -54,7 +54,7 @@ font-size: 12;
 <td >
 <input type="radio" name="check" value="공개">공개 
 <input type="radio" name="check" value="비공개">비공개
-</td>
+</td> 
 </tr>
 </table>
 <br/>
