@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +14,20 @@
 			<td width="100" height="30" align="center">자격요건</td>
 			<td width="100" height="30" align="center">관련직종</td>
 			<td width="100" height="30" align="center">연봉</td>
-			<td width="150" height="30" align="center">등록일</td>
+			<td width="200" height="30" align="center">등록일</td>
 		</tr>
-		<c:forEach var="article" items="${busslist}">
+		<c:forEach var="article" items="${bussList}">
+		     
 		     <tr>
-		     	<td align="center">${number}<c:set var="number" value="${number-1}"/></td>
-		     	<td align="center">article.bussnm</td>
-		     	<td align="center">article.cer</td>
-		     	<td align="center">article.rel</td>
-		     	<td align="center">article.sal</td>
+		     	<td align="center">${number}</td>
+		     	<td align="center"><a href="/KH/jun/job/bussView.do?num=${article.num}&pageNum=${pageNum}">${article.bussnm}</td>
+		     	<td align="center">${article.cer}</td>
+		     	<td align="center">${article.rel}</td>
+		     	<td align="center">${article.sal}</td>
 		     	<td align="center"><fmt:formatDate value="${article.reg_date}" pattern="yyyy년 MM월 dd일"/></td>
+		    
 		     </tr>
+		    <c:set var="number" value="${number-1}"/> 
 		</c:forEach>
 		<c:if test="${count==0}">
 		<tr>

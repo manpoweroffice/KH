@@ -7,7 +7,7 @@
 <br>
 <a href="career/award.do">수상내역등록</a>
 <br>
-<a href="job/business.do">기업목록</a>
+<a href="jun/job/business.do">기업목록</a>
 </body>
 </html>
 
