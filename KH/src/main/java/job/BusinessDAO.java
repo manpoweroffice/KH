@@ -11,14 +11,14 @@ public class BusinessDAO extends SqlSessionDaoSupport{
 		return getSqlSession().selectList("job.listjob",map);
 	}
 	
-	public BusinessController getBussOne(int num){
+	public BusinessVo getBussOne(int num){
 		return getSqlSession().selectOne("job.bussOne",num);
 	}
 	
-	public int insertBuss(BusinessController buss){
+	public int insertBuss(BusinessVo buss){
 		return getSqlSession().insert("job.insertBuss",buss); 
 	}
-	public int updateBuss(BusinessController buss){
+	public int updateBuss(BusinessVo buss){
 		return getSqlSession().update("job.updateBuss",buss);
 	}
 	public int deleteBuss(int num){

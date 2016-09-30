@@ -12,13 +12,12 @@ public class Self {
 	
 	public Self(){}
 	
-	public Self(String stu_num, String content1, String content2, String content3, String content4, Timestamp s_date){
+	public Self(String stu_num, String content1, String content2, String content3, String content4){
 		this.stu_num=stu_num;
 		this.content1=content1;
 		this.content2=content2;
 		this.content3=content3;
 		this.content4=content4;
-		this.s_date=s_date;
 	}
 	
 	public String getStu_num() {
