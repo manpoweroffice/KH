@@ -14,8 +14,11 @@
 	<a href="gil/register/Class_Basket.do">/register/Class_Basket.do</a><br>
 
 	<a href="song/self/introduction.do">self/introduction.do</a><br>
+	<a href="song/main/message.do">main/message.do</a><br>
 
 	<a href="gil/login/login.do">Login/login.do</a><br>
+	
+	
 
 </body>
 </html>

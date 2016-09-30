@@ -61,5 +61,14 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- 쪽지 -->
+	<bean id="message" class="main.MessageController" p:messagedao-ref="messagedao" p:studentdao-ref="studentdao"/>
+	<bean id="messagedao" class="main.MessageDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="studentdao" class="profile.StudentDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
 </beans>
 

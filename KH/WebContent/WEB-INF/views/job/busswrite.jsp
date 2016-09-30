@@ -36,13 +36,15 @@ $(function(){
 </head>
 <body>
 <form:form action="/KH/jun/job/busswrite.do" id="frm">
-<p>회사명 : <input type="text" id="bussnm" name="bussnm" size=70></p>
-<p>자격요건 : <input type="text" id="cer" name="cer" size="70"></p>
-<p>관련직종 : <input type="text" id="rel" name="rel" size="50"></p> 
-<p>연봉 : <input type="text" id="sal" name="sal"></p>
+<p>회사명 : <input type="text" id="bussnm" name="bussnm" size=30> &nbsp; 자격요건 : <input type="text" id="cer" name="cer" size="30"></p>
+<p>관련직종 : <input type="text" id="rel" name="rel" size="30"> &nbsp; 연봉 : <input type="text" id="sal" name="sal" size="30"></p> 
+<p></p>
 <p>내용</p>
 <textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
+<div align="right">
 <input type="submit" id="saveBtn" value="글 쓰기"/>
+<input type="button" value="취소" onclick="location.href='/KH/jun/job/business.do'">
+</div>
 </form:form>
 </body>
 </html>
