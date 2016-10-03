@@ -10,6 +10,8 @@
 <a href="chan/career/activity.do">기타활동</a>
 <br>
 <a href="jun/job/business.do">기업목록</a>
+<br>
+<a href="chan/career/file.do">자격증등록</a>
 </body>
 </html>
 
