@@ -20,7 +20,7 @@ public class StudentCommand {
 	private String h_job; /* Ãë¾÷Èñ¸ÁÁ÷¾÷ */
 	private String h_location; /* Èñ¸ÁÃë¾÷Áö¿ª */
 	private String h_income; /* Èñ¸Á¿¬ºÀ */
-	
+	private String college_state;/*ÇÐÀû»óÅÂ*/
 	public StudentCommand(){
 	
 	}
@@ -49,10 +49,16 @@ public class StudentCommand {
 		this.h_location = h_location;
 		this.h_income = h_income;
 	}
-	public StudentCommand( String stu_num,String mil_service,String last_rank, String tour_of_duty, String exemp
-			,String h_tob,String h_job,String h_location,String h_income) {
+	public StudentCommand( String stu_num,String p_check,String college_state,String mil_service,String last_rank, String tour_of_duty, String exemp
+			,String h_phone,String phone,String en_name,String address,String h_tob,String h_job,String h_location,String h_income) {
 		super();
 		this.stu_num = stu_num;
+		this.p_check = p_check;
+		this.address=address;
+		this.en_name=en_name;
+		this.h_phone=h_phone;
+		this.phone=phone;
+		this.college_state=college_state;
 		this.mil_service = mil_service;
 		this.last_rank = last_rank;
 		this.tour_of_duty = tour_of_duty;
@@ -176,6 +182,13 @@ public class StudentCommand {
 	public void setH_income(String h_income) {
 		this.h_income = h_income;
 	}
+	public String getCollege_state() {
+		return college_state;
+	}
+	public void setCollege_state(String college_state) {
+		this.college_state = college_state;
+	}
+	
 	
 	
 

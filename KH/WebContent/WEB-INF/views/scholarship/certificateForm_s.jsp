@@ -8,21 +8,29 @@
 			window.print();
 		};
 	</script>
+<style type="text/css">
+#certificate{
+background-image:url("../../image/certificatef.jpg");
+background-repeat:no-repeat;
+background-size:auto;
+padding-top:120px;
+padding-left:40px;
+width:622px;
+height:908px;
+}
+</style>
 <head>
-<title>Insert title here</title>
 </head>
-<body>
+<body id="certificate">
 <div id="selectArea">
 <h1 align="center">장학증서</h1>
 <h6>제20190927-0001호</h6>
 <br/>
 <br/>
-성명&nbsp;&nbsp;&nbsp;강민경<br>
-생년월일&nbsp;&nbsp;&nbsp;20160927<br>
-학과&nbsp;&nbsp;&nbsp;KH<br>
-학번&nbsp;&nbsp;&nbsp;20160927<br>
-수혜여부&nbsp;&nbsp;&nbsp;20160927<br>
-
+성명&nbsp;&nbsp;&nbsp;${command.ko_name }<br>
+생년월일&nbsp;&nbsp;&nbsp;${command.birthday}<br>
+학과&nbsp;&nbsp;&nbsp;${command.department}<br>
+학번&nbsp;&nbsp;&nbsp;${command.stu_num}<br>
 <br/>
 <br/>
 <h2 align="center">위 사실을 증명합니다.</h2>

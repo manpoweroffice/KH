@@ -62,7 +62,11 @@
 	
 	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
 	
-<!-- 	<bean id="image" class="profile.imageUploadController"/> -->
+	<!-- certificate -->
+	<bean id="certificateDao" class="certificate.CertificateDao">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="certificate" class="certificate.CertificateController" p:certificateDao-ref="certificateDao"/>
 	
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
