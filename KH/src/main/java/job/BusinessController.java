@@ -96,4 +96,29 @@ public class BusinessController {
 		return mav;
 	}
 
+	@RequestMapping(value="/job/bussUpdate.do",method=RequestMethod.GET)
+	public ModelAndView modifyView(@RequestParam("num")int num){
+	ModelAndView mav= new ModelAndView();
+		
+		BusinessVo bussVo= bussDao.getBussOne(num);
+		mav.setViewName("job/bussModify");
+		mav.addObject("bussVo", bussVo);
+		return mav;
+	}
+	@RequestMapping(value="/job/bussUpdate.do",method=RequestMethod.POST)
+	public String modify(BusinessVo bussVo){
+		int t=bussDao.updateBuss(bussVo);
+		if(t==0){
+			System.out.println("실패");
+		}else{
+			System.out.println("성공");
+		}
+		return "redirect:/jun/job/business.do";
+	}
+	
+	@RequestMapping("/job/bussDelete.do")
+	public String delete(@RequestParam("num")int num){
+		int Delc= bussDao.deleteBuss(num);
+		return "redirect:/jun/job/business.do";
+	}
 }
