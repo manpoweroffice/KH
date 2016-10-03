@@ -36,12 +36,16 @@ public class StudentController {
 		String p_check=command.getP_check();
 		String college_state="¿Á«–";
 		command= new StudentCommand(stu_num,p_check,college_state,command.getMil_service(),command.getLast_rank(),command.getTour_of_duty(),command.getExemp()
-				,command.getH_tob(),command.getH_job(),command.getH_location(),command.getH_income());
+				,command.getH_phone(),command.getPhone(),command.getEn_name(),command.getAddress(),command.getH_tob(),command.getH_job(),command.getH_location(),command.getH_income());
 		studentDao.update(command);    
 		
 		command=studentDao.selectOne(stu_num);
 		return new ModelAndView("/profile/success","command",command);
 		
+	}
+	@RequestMapping(value="/profile/upload.do",method = RequestMethod.GET)
+	public String upload(){
+		return "/profile/upload";
 	}
 }
 

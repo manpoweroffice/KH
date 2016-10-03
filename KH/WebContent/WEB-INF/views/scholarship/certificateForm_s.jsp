@@ -8,10 +8,20 @@
 			window.print();
 		};
 	</script>
+<style type="text/css">
+#certificate{
+background-image:url("../../image/certificatef.jpg");
+background-repeat:no-repeat;
+background-size:auto;
+padding-top:120px;
+padding-left:40px;
+width:622px;
+height:908px;
+}
+</style>
 <head>
-<title>Insert title here</title>
 </head>
-<body>
+<body id="certificate">
 <div id="selectArea">
 <h1 align="center">장학증서</h1>
 <h6>제20190927-0001호</h6>

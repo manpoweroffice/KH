@@ -27,16 +27,21 @@ public class CertificateController {
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd",java.util.Locale.getDefault());
 		Date date=new Date();
 		String thisdate=dateFormat.format(date);
+		String college_state=command.getCollege_state();
 		int compare = thisdate.compareTo(gradu_date);
 		
-		command= new CertificateCommand(stu_num,command.getCollege_state(),gradu_date,command.getDepartment(),command.getMajor(),
+		command= new CertificateCommand(stu_num,college_state,gradu_date,command.getDepartment(),command.getMajor(),
 				command.getKo_name(),command.getEn_name(),command.getBirthday());
 		
 		if(compare>0){//Á¹¾÷
 			certificateDao.update_state(command);
 		}
 	    	command=certificateDao.select_c(stu_num);
-		return new ModelAndView("/certificate/certificateForm_f","command",command);
+	    	
+	    if(college_state.equals("ÀçÇÐ"))
+	    	return new ModelAndView("/certificate/certificateForm_f","command",command);
+	    else
+	    	return new ModelAndView("/certificate/certificateForm_g","command",command);
 	}  
 
 }

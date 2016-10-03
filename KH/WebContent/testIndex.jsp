@@ -6,7 +6,6 @@
 </head>
 <body> 
 
-
 	<a href="yeji/profile/basicForm.do">/profile/basicForm.do</a><br>
 	
 	<a href="yeji/certificate/certificateForm_f.do">/certificate.do</a><br>
@@ -17,8 +16,6 @@
 	<a href="song/main/message.do">main/message.do</a><br>
 
 	<a href="gil/login/login.do">Login/login.do</a><br>
-	
-	
 
 </body>
 </html>

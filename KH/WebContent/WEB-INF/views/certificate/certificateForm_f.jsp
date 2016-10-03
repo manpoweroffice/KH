@@ -3,11 +3,26 @@
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
-<h1 align="center">재학증명서</h1>
+	<script type="text/javascript">
+		function fnPrint() {
+			document.body.innerHTML = selectArea.innerHTML;
+			window.print();
+		};
+	</script>
+<style type="text/css">
+#certificate{
+background-image:url("../../image/certificatef.jpg");
+background-repeat:no-repeat;
+background-size:auto;
+padding-top:120px;
+padding-left:40px;
+width:622px;
+height:908px;
+}
+</style>
+
+<body id="certificate">
+<div id="selectArea">
 <h6>제20190927-0001호</h6>
 <br/>
 <br/>
@@ -15,13 +30,14 @@
 생년월일&nbsp;&nbsp;&nbsp;${command.birthday}<br>
 학과&nbsp;&nbsp;&nbsp;${command.department}<br>
 학번&nbsp;&nbsp;&nbsp;${command.stu_num}<br>
-${command.college_state}
+${command.college_state }
+${command.gradu_date }
 <br/>
 <br/>
-<h2 align="center">위 사실을 증명합니다.</h2>
 <br/>
-<h4 align="center">2016년09월27일</h4>
-<h1 align="center">00000대학교</h1>
-
+<h4>2016년09월27일</h4>
+</div>
 </body>
+
+<input type="button" value="출력" onClick="fnPrint()" />
 </html>
