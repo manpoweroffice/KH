@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="classMapper">
 
 	<insert id="insertAttend">
-	
+	 insert into attendance()
 	</insert>
 	
 	<select id="selectAll" resultType="register.Class_BasketBean">
