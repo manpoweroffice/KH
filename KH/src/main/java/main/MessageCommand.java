@@ -11,13 +11,14 @@ public class MessageCommand {
 	
 	public MessageCommand(){}
 	
-	public MessageCommand(int m_num, String send, String receive, String subject, String content, String r_check) {
+	public MessageCommand(int m_num, String send, String receive, String subject, String content, String m_date, String r_check) {
 		super();
 		this.m_num = m_num;
 		this.send = send;
 		this.receive = receive;
 		this.subject = subject;
 		this.content = content;
+		this.m_date = m_date;
 		this.r_check = r_check;
 	}
 	

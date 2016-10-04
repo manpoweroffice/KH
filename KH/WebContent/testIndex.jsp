@@ -14,6 +14,7 @@
 
 	<a href="song/self/introduction.do">self/introduction.do</a><br>
 	<a href="song/main/message.do">main/message.do</a><br>
+	<a href="song/main/message_send.do">main/message_send.do</a><br>
 
 	<a href="gil/login/login.do">Login/login.do</a><br>
 

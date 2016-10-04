@@ -10,20 +10,16 @@
 		<table>
 			<tr>
 				<td>번호</td>
-				<td>받은 사람</td>
-				<td>제 목</td>
+				<td>보낸사람</td>
+				<td>내 용</td>
 				<td>전송일자</td>
-				<td>수신여부</td>
 			</tr>
-			<c:forEach var="messageList" items="${messageList}">
 			<tr>
-				<td> ${messageList} </td>
-				<td> ${messageList.receive} </td>
-				<td> ${messageList.subject} </td>
-				<td> ${messageList.m_date} </td>
-				<td> ${messageList.r_check} </td>
+				<td> ${message} </td>
+				<td> ${message.send} </td>
+				<td> ${message.content} </td>
+				<td> ${message.m_date} </td>
 			</tr>
-			</c:forEach>
 		</table>
 	</form>
 </body>
