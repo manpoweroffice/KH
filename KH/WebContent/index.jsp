@@ -11,6 +11,6 @@
 <br>
 <a href="jun/job/business.do">기업목록</a>
 <br>
-<a href="chan/career/file.do">자격증등록</a>
+<a href="chan/career/file.do">파일시험</a>
 </body>
 </html>
