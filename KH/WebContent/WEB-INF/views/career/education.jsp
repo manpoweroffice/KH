@@ -28,11 +28,7 @@
 					<td align="center" width="100"></td>
 					<td align="center" width="200"></td>
 					<td align="center" width="50"></td>
-					<td align="center" width="50"></td>
-					<td align="center" width="100"></td>
-					<td align="center" width="500"></td>
-					<td align="center" width="50"></td>
-					<td align="center" width="50"></td>
+				
 				</tr>
 		</table>
 	

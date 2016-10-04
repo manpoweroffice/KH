@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="self">
+	
+	<insert id="insert" parameterType="self.Self">
+	insert into self_intro values(#{stu_num}, #{content1}, #{content2}, #{content3}, #{content4}, sysdate)</insert>
+	
+	<update id="update" parameterType="self.Self">
+	update self_intro set content1=#{content1}, content2=#{content2}, content3=#{content3}, content4=#{content4}, s_date=sysdate where stu_num=#{stu_num}</update>
+	
+	<select id="selectOne" resultType="self.Self" parameterType="String">
+	select * from self_intro where stu_num=#{stu_num}</select>
+	
+	<select id="selectAll" resultType="self.Self"> 
+	select * from self_intro
+	</select>
+	
+</mapper>

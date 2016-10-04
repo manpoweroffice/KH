@@ -9,7 +9,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<context:annotation-config />
-
 	<!-- 프로퍼티스 파일 읽어오기 -->
 	<context:property-placeholder location="classpath:db.properties" />
 	<!-- 커넥션풀연결 -->
@@ -25,24 +24,8 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:sql/*.xml" />
 	</bean>
-
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory" />
-	</bean>
-
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>messages.validation</value>
-			</list>
-		</property>
-	</bean>
-
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
-
-	<!-- Tiles -->
+	
+	<!-- Tiles -->  
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
@@ -55,35 +38,26 @@
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 		<property name="order" value="1" />
-	</bean>
+	</bean> 
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   		<property name="prefix" value="/WEB-INF/views/" />
   		<property name="suffix" value=".jsp" />
   		<property name="order" value="2" />
   	</bean>
+
 	
-	<!-- 자기소개서 -->
-<!-- 	<bean id="self" class="self.SelfController" p:selfDao-ref="selfDao"/>
-	<bean id="selfDao" class="self.SelfDAO"> 
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>  -->
-	
-	<!-- 이력관리 -->
-	<context:component-scan base-package="license.controller" />
-	<bean class="license.EducationController"/>
-	<bean class="license.LicenseController"/>
-	<bean class="license.LicenseDTO"/>
-	
-	<!-- 준영이 -->
-	<bean id="bussDao" class="job.BusinessDAO">
-	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+
+  	  
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+			</list>
+		</property>
 	</bean>
-	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 
-	<!-- 로그인 -->
-	<bean class="main.LoginController" />
-	
 
-	
 </beans>
 
