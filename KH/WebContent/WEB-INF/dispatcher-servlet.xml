@@ -45,6 +45,9 @@
   		<property name="suffix" value=".jsp" />
   		<property name="order" value="2" />
   	</bean>
+
+	
+
   	  
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -54,6 +57,7 @@
 			</list>
 		</property>
 	</bean>
+
 
 </beans>
 

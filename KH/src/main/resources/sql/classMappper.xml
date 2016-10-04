@@ -4,7 +4,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="classMapper">
 
+	<insert id="insertAttend">
+	 insert into attendance()
+	</insert>
+	
 	<select id="selectAll" resultType="register.Class_BasketBean">
 		select * from LECTURE
 	</select>
+	
+	<select id="selectLecCode" parameterType="String" resultType="String">
+		select lecture_code from lecture where prof_code=#{prof_code}
+	</select>
+	
+	<select id="countLec" parameterType="String" resultType="int">
+		select count(*) from rec_lectrue where lecture_code=#{lecture_code}
+	</select>
+	
+	<select id="selectRegLect" parameterType="String" resultType="register.Reg_LectureVo">
+		select*from rec_lecture where lecture_code=#{lecture_code}
+	</select>
+	
 </mapper>    

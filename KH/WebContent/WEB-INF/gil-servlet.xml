@@ -20,7 +20,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="mapperLocations" value="classpath:sql/*.xml" />
+		<property name="mapperLocations" value="classpath:sql/loginmapper.xml" />
 	</bean>
 
 	<!-- Tiles -->
@@ -65,9 +65,15 @@
 	<bean id="classDAO" class="register.Class_BasketDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
+	<bean id="logindao" class="main.LoginDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	
 
 	<!-- 로그인 -->
-	<bean class="main.LoginController" />
+	<bean class="main.LoginController" p:dao-ref="logindao" />
 
 </beans>
 
