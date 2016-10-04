@@ -4,10 +4,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="classMapper">
 
-	<insert id="insertAttend">
-	 insert into attendance()
+	<insert id="insertAttend" parameterType="map">
+	 insert into attendance(stu_num,stu_name,attendance,lecture_code,atd_date)
+	 values(#{stu_num},#{stu_name},#{attendance},#{lecture_code},#{atd_date});
 	</insert>
 	
+	<update id="updateAttend" parameterType="map">
+	update attendance
+	<set>
+	<if test="#{attendance}!=null">attendance=#{attendance}</if>
+	</set>
+	where stu_num=#{stu_num}
+	</update>
 	<select id="selectAll" resultType="register.Class_BasketBean">
 		select * from LECTURE
 	</select>
@@ -24,4 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select*from rec_lecture where lecture_code=#{lecture_code}
 	</select>
 	
+	<select id="selectAttend" parameterType="String" resultType="register.AttendanceVo">
+		select*from attendance where lecture_code=#{lecture_code}
+	</select>
 </mapper>    

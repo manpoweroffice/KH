@@ -7,14 +7,24 @@ public class AttendanceVo {
 	private String stu_num;
 	private String stu_name;
 	private String attendance;
+	private String lecture_code;
 	private Timestamp atd_date;
 	public AttendanceVo(){}
 
-	public AttendanceVo(String stu_num,String stu_name,String attendance,Timestamp atd_date){
+	public AttendanceVo(String stu_num,String stu_name,String attendance,String lecture_code,Timestamp atd_date){
 		this.stu_num=stu_num;
 		this.stu_name=stu_name;
 		this.attendance=attendance;
+		this.lecture_code=lecture_code;
 		this.atd_date=atd_date;
+	}
+
+	public String getLecture_code() {
+		return lecture_code;
+	}
+
+	public void setLecture_code(String lecture_code) {
+		this.lecture_code = lecture_code;
 	}
 
 	public String getStu_num() {

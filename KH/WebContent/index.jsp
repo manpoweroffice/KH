@@ -14,7 +14,5 @@
 </body>
 </html>
 http://www.jigi.net/4069
-
-ajax이용하여 출력 없으면 새로 인설트 아니면 업데이트 가능하도록
-interseptor를 이용?해야되나 mapper 카운터하여 없으면 새로 인설트 
-있으면 업데이트
+interseptor를 이용?해야되나 mapper 카운터하여 없으면 인설트부분으로 가기
+있으면 업데이트 부분으로가기

@@ -62,8 +62,8 @@
 	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 	<bean class="util.PhotoController"></bean>
 	<bean class="register.Attend_CheckController"></bean>
-	<mvc:annotation-driven/>
-	<mvc:resources mapping="/resources/**" location="/resources/" /> 
+	
+
 
 </beans>
 
