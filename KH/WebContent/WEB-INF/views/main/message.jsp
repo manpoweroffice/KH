@@ -5,7 +5,7 @@
 <head>
 <title></title>
 <script>
-	function pop(m_num){
+	function pop(m_num){ 
 		var form = document.popForm;
 		window.open('', 'new', 'left=100,top=0,width=690,height=434');
 		form.action="message.do";
