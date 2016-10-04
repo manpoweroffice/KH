@@ -15,12 +15,12 @@
             <table>
                 <tr>
                     <td>학 번</td>
-                    <td><input type="text" name="id" /></td>
+                    <td><input type="text" name="stu_num" /></td>
                
                 </tr>
                 <tr>
                     <td>비밀번호</td>
-                    <td><input type="password" name="password" /></td>
+                    <td><input type="password" name="pwd" /></td>
                 </tr>
                 
                 <tr>
