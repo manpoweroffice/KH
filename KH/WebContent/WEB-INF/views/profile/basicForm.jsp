@@ -5,9 +5,8 @@
 <html>
 <script>
 function openpop(){
-	window.open("upload.do","width=400, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );
+	window.open("/KH/yeji/profile/upload.do","upload","toolbar=no,location=no,status=no,menubar=no scrollbars=no,resizable=no,width=300,height=200");
 }
-
 </script>
 <style>
 table{
@@ -25,13 +24,13 @@ font-size: 12;
 <head>
 </head>  
 <body>
-<form method="POST">
+<form name="basicForm" method="POST">
 <table border="1" >
 <tr>
 <td rowspan="7">
 <img src="" width="120px" height="160px">
 <br/>
-<input type="button" value="업로드" onclick="openpop()">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="업로드" onclick="openpop()">
 </td>
 </tr>
 <tr>   
@@ -103,8 +102,7 @@ font-size: 12;
 <td><input type="text" value="${command.h_income }" name="h_income">만원</td>
 </table> 
 <br/>
-
-<input type="submit" value="저장">
+<input type="submit" value="저장" >
 </form>
 </body>
 </html>

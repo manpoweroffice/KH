@@ -61,6 +61,7 @@
 	</bean>
 	
 	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
+	<bean id="upload" class="profile.UploadController"></bean>
 	
 	<!-- certificate -->
 	<bean id="certificateDao" class="certificate.CertificateDao">

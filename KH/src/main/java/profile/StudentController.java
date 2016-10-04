@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("profile/basicForm.do")
 public class StudentController {
 	
 	private StudentDao studentDao;
@@ -21,7 +20,7 @@ public class StudentController {
 		return new StudentCommand();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value="profile/basicForm.do",method = RequestMethod.GET)
 	public ModelAndView form(){
 		//@requestparam(StudentCommand command)
 		String stu_num="100101";
@@ -30,7 +29,7 @@ public class StudentController {
 		return new ModelAndView("/profile/basicForm","command",command);
 		}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(value="profile/basicForm.do",method=RequestMethod.POST)
 	public ModelAndView modify(@ModelAttribute StudentCommand command){
 		String stu_num="100101";
 		String p_check=command.getP_check();
