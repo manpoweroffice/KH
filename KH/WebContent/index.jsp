@@ -10,5 +10,11 @@
 <a href="chan/career/activity.do">기타활동</a>
 <br>
 <a href="jun/job/business.do">기업목록</a>
+<a href="jun/register/Attend_Check.do">출석체크</a>
 </body>
 </html>
+http://www.jigi.net/4069
+
+ajax이용하여 출력 없으면 새로 인설트 아니면 업데이트 가능하도록
+interseptor를 이용?해야되나 mapper 카운터하여 없으면 새로 인설트 
+있으면 업데이트
