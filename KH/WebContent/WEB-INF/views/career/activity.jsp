@@ -99,7 +99,7 @@ p {
 		
 		</table>
 	
-		<form:form action="/job/business.do" id="frm">
+<form:form action="" id="frm">
 <p>회사명 : <input type="text" id="bussnm" name="bussnm" size=70></p>
 <p>자격요건 : <input type="text" id="cer" name="cer" size="70"></p>
 <p>연봉 : <input type="text" id="sal" name="sal"></p>

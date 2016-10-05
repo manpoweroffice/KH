@@ -19,7 +19,8 @@
 		<property name="user" value="${jdbc.user}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-
+	
+	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:sql/*.xml" />
@@ -57,9 +58,22 @@
 
 	<!-- 이력관리 -->
 	<context:component-scan base-package="license.controller" />
+	<bean class="license.FileController"/>
+	<bean class="license.ActivityController"/>
+	<bean class="license.AwardController"/>
 	<bean class="license.EducationController"/>
 	<bean class="license.LicenseController"/>
-	<bean class="license.LicenseDTO"/>
+	<bean class="license.LicenseDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
 	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+	<!-- maximum file size in bytes 50MB -->
+
+	<property name="maxUploadSize" value="52428800" />
+
+</bean>
+
 </beans>
 
