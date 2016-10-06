@@ -12,10 +12,10 @@
 		<table border="1" width="1200" cellpadding="0" cellspacing="0"
 			align="center">
 			<tr height="30">
-				<td align="center" width="200"><p>교육과목</p></td>
-				<td align="center" width="100"><p>교육기관</p></td>
-				<td align="center" width="200"><p>기간</p></td>
-				<td align="center" width="100"><p>교육내용</p></td>
+				<td align="center" width="200"><p>종류</p></td>
+				<td align="center" width="100"><p>등급</p></td>
+				<td align="center" width="200"><p>수상일자</p></td>
+				<td align="center" width="100"><p>수여기관</p></td>
 			</tr>
 			
 				<tr height="30"">
