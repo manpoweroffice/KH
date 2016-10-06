@@ -3,28 +3,49 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="classMapper">
-
-	<insert id="insertAttend" parameterType="map">
-	 insert into attendance(stu_num,stu_name,attendance,lecture_code,atd_date)
-	 values(#{stu_num},#{stu_name},#{attendance},#{lecture_code},#{atd_date});
+	
+	<!-- 출석부 -->
+	<insert id="insertAttend" parameterType="register.AttendanceVo">
+		insert into attendance(stu_num,stu_name,attendance,lecture_code,atd_date)
+	 	values(#{stu_num},#{stu_name},#{attendance},#{lecture_code},#{atd_date});
 	</insert>
 	
-	<update id="updateAttend" parameterType="map">
-	update attendance
-	<set>
-	<if test="#{attendance}!=null">attendance=#{attendance}</if>
-	</set>
-	where stu_num=#{stu_num}
+	<!-- 수강신청  -->
+	<insert id="insertLect" parameterType="register.Reserve_ListVo">
+		insert into reserve_list values(#{stu_num},#{lecture_code})
+	</insert>
+	
+	<!-- 수강신청 확정된 강의를 수강 중인 강의 테이블로 인설트  -->
+	<insert id="insertRegLect" parameterType="register.Reg_LectureVo">
+		insert into reg_lecture values(#{stu_num},#{stu_name},#{lecture_code},#{lecture_name},#{term})
+	</insert>
+	
+	<!-- 출석부 수정 -->
+	<update id="updateAttend" parameterType="register.AttendanceVo">
+		update attendance 
+		<set>
+		<if test="#{attendance}!=null">attendance=#{attendance}</if>
+		</set>
+		where stu_num=#{stu_num} and atd_date=#{atd_date}
 	</update>
+	
+	<!-- 수강신청 수강포기 -->
+	<delete id="deleteLect" parameterType="String">
+		delete reserve_list where stu_num=#{stu_num}
+	</delete>
+	<!-- 학기가 지나면 삭제 -->
+	<delete id="deleteRegLect" parameterType="String">
+		delete reg_lecturce where term=#{term}
+	</delete>
 	<select id="selectAll" resultType="register.Class_BasketBean">
 		select * from LECTURE
 	</select>
 	
-	<select id="selectLecCode" parameterType="String" resultType="String">
+	<select id="selectLecCode" parameterType="String" resultType="register.Reg_LectureVo">
 		select lecture_code from lecture where prof_code=#{prof_code}
 	</select>
 	
-	<select id="countLec" parameterType="String" resultType="int">
+	<select id="countLec" parameterType="register.Reg_LectureVo" resultType="int">
 		select count(*) from rec_lectrue where lecture_code=#{lecture_code}
 	</select>
 	
@@ -32,7 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select*from rec_lecture where lecture_code=#{lecture_code}
 	</select>
 	
-	<select id="selectAttend" parameterType="String" resultType="register.AttendanceVo">
-		select*from attendance where lecture_code=#{lecture_code}
+	<select id="selectAttend" parameterType="register.AttendanceVo" resultType="register.AttendanceVo">
+		select*from attendance where lecture_code=#{lecture_code} and atd_date=#{atd_date}
 	</select>
-</mapper>    
+	
+</mapper> 
