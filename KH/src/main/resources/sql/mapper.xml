@@ -4,12 +4,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="stuInfo"> 
 	
-	<select id="selectOne" parameterType="String" resultType="profile.StudentCommand">
-	select * from stu_info where stu_num=#{stu_num}
+	<resultMap type="profile.Upload" id="Upload">
+		<result column="stu_num" property="stu_num"/>
+		<result column="path" property="path"/>
+		<result column="file_name" property="file_name"/>
+		<result column="type" property="type"/>
+	</resultMap>  
+	<resultMap type="profile.StudentCommand" id="StudentCommand">
+		<result column="stu_num" property="stu_num"/>
+		<result column="pwd" property="pwd"/>
+		<result column="stu_class" property="stu_class"/>
+		<result column="sex" property="sex"/>
+		<result column="department" property="department"/>
+		<result column="major" property="major"/>
+		<result column="ko_name" property="ko_name"/>
+		<result column="en_name" property="en_name"/>
+		<result column="birthday" property="birthday"/>
+		<result column="phone" property="phone"/>  
+		<result column="h_phone" property="h_phone"/>
+		<result column="p_check" property="p_check"/>
+		<result column="mil_service" property="mil_service"/>
+		<result column="last_rank" property="last_rank"/>
+		<result column="tour_of_duty" property="tour_of_duty"/>
+		<result column="exemp" property="exemp"/>
+		<result column="h_tob" property="h_tob"/>  
+		<result column="h_job" property="h_job"/>
+		<result column="h_location" property="h_location"/>
+		<result column="h_income" property="h_income"/>
+		<result column="college_state" property="college_state"/>
+		<collection property="upload" resultMap="Upload"/>
+	</resultMap>
+	
+	<select id="select" parameterType="String" resultMap="StudentCommand">
+	select * from stu_info natural join storage where stu_num=#{stu_num}
 	</select>
 	
 	<select id="selectOne2" parameterType="String" resultType="String">
 	select ko_name from stu_info where stu_num=#{stu_num}
+	</select>
+	
+	<select id="check" parameterType="String" resultType="int">
+	select count(*) from storage where stu_num=#{stu_num}
 	</select>
 	
 	<update id="update" parameterType="profile.StudentCommand" >
@@ -39,5 +74,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update_state" parameterType="certificate.CertificateCommand">
 	update stu_info set	college_state='졸업' where stu_num=#{stu_num}
 	</update>
+	
+	<insert id="insertImg" parameterType="profile.Upload">
+      insert into storage values(#{stu_num},#{file_name},#{path},#{type})
+    </insert>
+    
+    <update id="updateImg" parameterType="profile.Upload">
+     update storage set file_name=#{file_name},path=#{path} where stu_num=#{stu_num}
+    </update>
+   
+   
    
 </mapper>    

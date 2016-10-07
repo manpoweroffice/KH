@@ -1,7 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8"  %>
 	<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<jsp:useBean id="today" class="java.util.Date" />
+<fmt:formatDate value="${today}" var="year" pattern="yyyy"/>
+<fmt:formatDate value="${today}" var="Month" pattern="M"/>
+<fmt:formatDate value="${today}" var="date" pattern="d"/>
 <html>
 	<script type="text/javascript">
 		function fnPrint() {
@@ -10,7 +14,7 @@
 		};
 	</script>
 <style type="text/css">
-#certificate{
+#selectArea{
 background-image:url("../../image/certificatef.jpg");
 background-repeat:no-repeat;
 background-size:auto;
@@ -20,24 +24,71 @@ width:622px;
 height:908px;
 }
 </style>
-
-<body id="certificate">
-<div id="selectArea">
-<h6>제20190927-0001호</h6>
-<br/>
-<br/>
-성명&nbsp;&nbsp;&nbsp;${command.ko_name }<br>
-생년월일&nbsp;&nbsp;&nbsp;${command.birthday}<br>
-학과&nbsp;&nbsp;&nbsp;${command.department}<br>
-학번&nbsp;&nbsp;&nbsp;${command.stu_num}<br>
-${command.college_state }
-${command.gradu_date }
-<br/>
-<br/>
-<br/>
-<h4>2016년09월27일</h4>
-</div>
+<body id="selectArea">
+	
+		<table width=80% border="0" cellspacing="0" cellpadding="0">
+			<br/>
+			<br/>
+			<tr>
+				<td align="left">제20190927-0001호</td>
+			</tr>
+		</table>
+			<br>
+			<table border="0" cellspacing="0" cellpadding="10" align="center">
+				<tr>
+					<td>이     름 :</td>
+						
+					<td>${command.ko_name }</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				<tr>
+				<tr>
+					<td>생년월일 :</td>
+						
+					<td>${command.birthday}</td>
+				<tr>
+				<tr>
+					<td>학      과 :</td>
+					<td>${command.department}</td>
+				<tr>
+				<tr>
+					<td>학      번 :</td>
+					<td>${command.stu_num}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					
+				</table>
+			<br>
+			<br>
+			<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br><br>
+		<br>
+		<br>
+		<div align="center">
+			<label>${year}년 ${Month}월 ${date}일</label> <br>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 </body>
-
-<input type="button" value="출력" onClick="fnPrint()" />
+		<input type="button" value="출력" onClick="fnPrint()"/>
 </html>

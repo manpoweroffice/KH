@@ -1,11 +1,15 @@
 <%@ page contentType="text/html; charset=UTF-8"  %>
 	<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 	<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+<jsp:useBean id="today" class="java.util.Date" />
+<fmt:formatDate value="${today}" var="year" pattern="yyyy"/>
+<fmt:formatDate value="${today}" var="Month" pattern="M"/>
+<fmt:formatDate value="${today}" var="date" pattern="d"/>
 <html>
 	<script type="text/javascript">
 		function fnPrint() {
-			document.body.innerHTML = selectArea.innerHTML;
+			document.body.innerHTML = document.getElementById('selectArea').innerHTML;
 			window.print();
 		};
 	</script>
@@ -20,28 +24,78 @@ width:622px;
 height:908px;
 }
 </style>
-<head>
-</head>
-<body>
-<div id="selectArea">
-<h6>제20190927-0001호</h6>
-<br/>
-<br/>
-성명&nbsp;&nbsp;&nbsp;${command.ko_name }<br>
-생년월일&nbsp;&nbsp;&nbsp;${command.birthday}<br>
-학과&nbsp;&nbsp;&nbsp;${command.department}<br>
-학번&nbsp;&nbsp;&nbsp;${command.stu_num}<br>
-졸    업    일&nbsp;&nbsp;&nbsp;20160927<br>
-학    위    명&nbsp;&nbsp;&nbsp;${command.major}<br>
-학사학위&nbsp;&nbsp;&nbsp;학사<br>
-${command.college_state }
-${command.gradu_date }
-<br/>
-<br/>
-<br/>
-<h4 align="center">2016년09월27일</h4>
-</div>
-<input type="button" value="출력" onClick="fnPrint()" />
-
+<body id="selectArea">
+	
+		<table width=80% border="0" cellspacing="0" cellpadding="0">
+			<br/>
+			<br/>
+			<tr>
+				<td align="left">제20190927-0001호</td>
+			</tr>
+		</table>
+			<br>
+			<table border="0" cellspacing="0" cellpadding="10" align="center">
+				<tr>
+					<td>이     름 :</td>
+						
+					<td>${command.ko_name }</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				<tr>
+				<tr>
+					<td>생년월일 :</td>
+						
+					<td>${command.birthday}</td>
+				<tr>
+				<tr>
+					<td>학      과 :</td>
+					<td>${command.department}</td>
+				<tr>
+				<tr>
+					<td>학      번 :</td>
+					<td>${command.stu_num}</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					
+				<tr>
+				<tr>
+					<td>졸    업    일 :</td>
+					<td>${command.gradu_date }</td>
+				<tr>
+					<td>학    위    명 :</td>
+					<td>${command.major}</td>
+				<tr>
+					<td>학사학위 :</td>	<td>학사</td>
+				</tr>
+			</table>
+			<br>
+			<br>
+			<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br><br>
+		<br>
+		<br>
+		<div align="center">
+			<label>${year}년 ${Month}월 ${date}일</label> <br>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		
 </body>
+	<input type="button" value="출력" onClick="fnPrint()"/>
 </html>

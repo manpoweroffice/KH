@@ -22,6 +22,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<property name="typeAliasesPackage" value="com.sample.mgmt" />
 		<property name="mapperLocations" value="classpath:sql/*.xml" />
 	</bean>
 	
@@ -61,8 +62,7 @@
 	</bean>
 	
 	<bean id="profile" class="profile.StudentController" p:studentDao-ref="studentDao" />
-	<bean id="upload" class="profile.UploadController"></bean>
-	
+
 	<!-- certificate -->
 	<bean id="certificateDao" class="certificate.CertificateDao">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -72,5 +72,7 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
+	<mvc:annotation-driven/>
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 </beans>
 
