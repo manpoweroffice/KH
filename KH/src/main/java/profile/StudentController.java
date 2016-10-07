@@ -32,8 +32,7 @@ public class StudentController {
 		//@requestparam(StudentCommand command)
 		String stu_num="100101";
 		StudentCommand command=studentDao.select(stu_num);
-		System.out.println(command.getSex());
-		return new ModelAndView("/profile/basicForm","command",command);
+		return new ModelAndView("profile/basicForm","command",command);
 		}
 	
 	@RequestMapping(value="profile/basicForm.do",method=RequestMethod.POST)
@@ -44,13 +43,13 @@ public class StudentController {
 		
 		studentDao.update(command);    
 		
-		command=studentDao.selectOne(stu_num);
-		return new ModelAndView("/profile/success","command",command);
+		command=studentDao.select(stu_num);
+		return new ModelAndView("profile/success","command",command);
 		
 	}
 	@RequestMapping(value="/profile/upload.do",method = RequestMethod.GET)
 	public String upload(){
-		return "/profile/upload";
+		return "profile/upload";
 	}
 		
 	 public String upload(MultipartFile up,HttpServletRequest request){
