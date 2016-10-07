@@ -1,9 +1,29 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String cp= request.getContextPath();
+request.setCharacterEncoding("UTF-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>수강</title>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"/>
+<script>
+$(function(){
+	var url="<%=cp%>/jun/Class_Basket.do";
+	var params= "dumi"+new Date();
+	$.ajax({
+		type:"post",
+		url:url,
+		data:params,
+		dataType:"json",
+		success:function(args){
+			
+		},error:function(e){alert(e.responseText);}
+	});
+});
+</script>
 </head>
 <body>
 	<div style="width: 1200px; height: 500px; margin: auto;">
