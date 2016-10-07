@@ -3,6 +3,8 @@ package profile;
 public class StudentCommand {
 	private String stu_num; /* 학번 */
 	private String pwd; /* 비밀번호 */
+	private String sex; /* 성별 */
+	private String stu_class; /* 반 */
 	private String department; /* 학과 */
 	private String major; /* 전공 */
 	private String ko_name; /* 이름 */
@@ -21,16 +23,20 @@ public class StudentCommand {
 	private String h_location; /* 희망취업지역 */
 	private String h_income; /* 희망연봉 */
 	private String college_state;/*학적상태*/
+	private Upload upload;
+	
 	public StudentCommand(){
 	
 	}
-	public StudentCommand(String stu_num, String pwd, String department, String major, String ko_name, String en_name,
+	public StudentCommand(String stu_num, String pwd,String sex,String stu_class, String department, String major, String ko_name, String en_name,
 			String birthday, String phone, String h_phone, String p_check, String address, String mil_service,
 			String last_rank, String tour_of_duty, String exemp, String h_tob, String h_job, String h_location,
 			String h_income) {
 		super();
 		this.stu_num = stu_num;
 		this.pwd = pwd;
+		this.sex = sex;
+		this.stu_class=stu_class;
 		this.department = department;
 		this.major = major;
 		this.ko_name = ko_name;
@@ -49,7 +55,7 @@ public class StudentCommand {
 		this.h_location = h_location;
 		this.h_income = h_income;
 	}
-	public StudentCommand( String stu_num,String p_check,String college_state,String mil_service,String last_rank, String tour_of_duty, String exemp
+	public StudentCommand( String stu_num,String p_check,String mil_service,String last_rank, String tour_of_duty, String exemp
 			,String h_phone,String phone,String en_name,String address,String h_tob,String h_job,String h_location,String h_income) {
 		super();
 		this.stu_num = stu_num;
@@ -58,7 +64,6 @@ public class StudentCommand {
 		this.en_name=en_name;
 		this.h_phone=h_phone;
 		this.phone=phone;
-		this.college_state=college_state;
 		this.mil_service = mil_service;
 		this.last_rank = last_rank;
 		this.tour_of_duty = tour_of_duty;
@@ -79,6 +84,18 @@ public class StudentCommand {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public String getStu_class() {
+		return stu_class;
+	}
+	public void setStu_class(String stu_class) {
+		this.stu_class = stu_class;
 	}
 	public String getDepartment() {
 		return department;
@@ -188,8 +205,11 @@ public class StudentCommand {
 	public void setCollege_state(String college_state) {
 		this.college_state = college_state;
 	}
+	public Upload getUpload() {
+		return upload;
+	}
+	public void setUpload(Upload upload) {
+		this.upload = upload;
+	}
 	
-	
-	
-
 }
