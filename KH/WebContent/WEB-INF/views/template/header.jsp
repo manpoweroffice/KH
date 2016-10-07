@@ -88,7 +88,7 @@ $(document).ready(function(){
 	    	$('.num').load('refresh.html').fadeIn("slow");
 	    }, 1000); // 새로고침 시간 1000은 1초를 의미합니다.
     
-    });
+    });  
     
 	
 </script>
