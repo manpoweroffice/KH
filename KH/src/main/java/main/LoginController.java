@@ -11,17 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  
 @Controller
 public class LoginController {
-    
-	
-	
 	
 	private  LoginDAO dao;
-	
-	
-	
-	
-	
-	
+
 	public LoginDAO getDao() {
 		return dao;
 	}
@@ -38,30 +30,18 @@ public class LoginController {
  
     @RequestMapping(value = "/login/login.do",method = RequestMethod.POST)
     public String submit(@RequestParam String stu_num,@RequestParam String pwd,HttpServletRequest request   ) {
-    	
-   
-    	System.out.println();
-    	System.out.println("실행됌 1");
     	int check = dao.checkMember(stu_num, pwd);
-    	
-    	
-    	
-    	
+
     	if(check==0){
-    		return "";
+    		return "loginForm";
     		//실패했을경우
     	}else{
-    		request.getSession().setAttribute("msg","1");
-    		
-    		
-    		return "loginsuccess"; 
+    		request.getSession().setAttribute("msg", stu_num);
+
+    		return "main/main"; 
     		//성공했을경우
     	}
-      
-    	
-    	
-    	
-	
+
         }
     }
 

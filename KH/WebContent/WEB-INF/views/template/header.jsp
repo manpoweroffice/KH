@@ -3,115 +3,123 @@
 <%@ page isELIgnored="false" %>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script>
-	$(function(){
-		$("ul.menu li").hover(function(){
-			$(">ul:not(:animated)",this).slideDown("fast");
-		},
-		function(){
-			$(">ul",this).slideUp("fast");
-		});
-	});
-</script>
+<link href="../../image/bell.css" rel="stylesheet" media="screen">
+<script src="../../image/bootstrap.js"></script>
 <style>
-	#rogo{
-		width : 300;
-	}
-	#one {
-		font-size : 12px;
-		padding: 0;
-		margin: 0 auto;
-		position: absolute;
-		right: 20px;
-		top: 1px;
-	}
+*{font-size: 13px;}
+div, ul, li{margin:0px; padding:0px;}
+ul, li{list-style:none;}
 
-	#one>ul {
-		list-style: none;
-		padding: 10px 0;
-	}
+#wrap {
+	position: relative;
+	top:-50;
+	left:700;
+}
 
-	#one>ul>li {
-		display: inline;
-		text-transform: uppercase;
-		padding: 0 10px;
-		color: #000000;
-	}
-	
-	#one>ul>li>a {
-		text-decoration: none;
-		color: #000000;
-	}
-	* {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	#two{
-		position: absolute;
-		right: 20px;
-		top: 30px;
-	}
-	
-	ul.menu li {
-		float: left;
-		width: 140px;
-		position: relative;
-		z-index: 1;
-		zoom: 1;
-	}
-	
-	ul.menu li a {
-		display: block;
-		width: 100%;
-		height: 100%;
-		line-height: 48px;
-		text-align:center;
-		color: #000000;
-		text-decoration: none;
-		position: relative;
-	}
-	ul.menu li a:hover {
-		display: block;
-		width: 100%;
-		height: 100%;
-		line-height: 48px;
-		text-align:center;
-		color: #000000;
-		text-decoration: none;
-		position: relative;
-		background: #000000;
-		color:#FFFFFF;
-	}
-			
-	ul.sub {
-		display: none;
-		background: #FFFFFF;
-	}
-	
-	ul.sub li {
-		float: none;
-	}
-	
+.nav {
+	height:35px;
+	list-style: none;
+	width:800px;
+	margin:auto;
+	color:#000;
+}
+
+.topnav{
+	text-align:center;
+	width:100px;
+	height:15px;
+	cursor:pointer;
+	font-weight:bold;
+}
+.topnav li:HOVER{
+	background: #000;
+}
+
+.navi_set{
+	float: left;
+	padding:10px;
+	position: relative;
+}
+
+.subnav{
+	position: absolute;
+	left: 0; top: 35px;
+	display: none;
+}
+
+/* li속성 */
+.subnav li{
+	padding:10px;
+	width:100px;
+	text-align:center;
+	cursor:pointer;
+	background: #fff;
+}
+
+/* 마우스 오버 시 라인 색변경*/
+.subnav li:hover{
+	background:#6799FF;
+}
+
+/* 클릭 후 적용 */
+.subnav>li>a{
+	color:#000;
+	text-decoration: none;
+}
 
 </style>
+<script>
+$(document).ready(function(){  
+  
+	$(".topnav").hover(function() { //마우스를 topnav에 오버시
+		$(this).parent().find(".subnav").slideDown('normal').show(); //subnav가 내려옴.
+		$(this).parent().hover(function() {  
+		}, function(){  
+			$(this).parent().find(".subnav").slideUp('fast'); //subnav에서 마우스 벗어났을 시 원위치시킴  
+		});  
+	});  
+  
+});  
+    $(function(){
+    	$('#example').popover('hide')
+    	
+	    var auto_refresh = setInterval(
+	    function (){
+	    	$('.num').load('refresh.html').fadeIn("slow");
+	    }, 1000); // 새로고침 시간 1000은 1초를 의미합니다.
+    
+    });  
+    
+	
+</script>
 <body>
+	<div>
 	<a href="#">
 		<img alt="rogo" src="../../image/rogo2.jpg" id="rogo">
 	</a>
+	</div>
+	<div class="belldiv">
+	<a data-toggle="popover" title="제목" data-content="안녕하세요." data-placement="bottom" id="example">
+			<img src="../../image/bell.jpg" id="bell"></a>
+	</div>
+	<div class="num">
+		<span class="badge badge-important">2</span>
+	</div>
 	<nav>
 	    <div id="one">
 			<c:choose>
-				<c:when test="${memId.equals('admin')}">
+				<c:when test="${msg.equals('admin')}">
 					<ul>
-					    <li>${memId}</li>
+					    <li>${msg}</li>
+					    <li><b><a href="/KH/song/main/message.do">쪽지함</a></b>
 					  	<li><a href="#">로그아웃</a></li><!--
 					 --><li><a href="#">사이트맵</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<ul>
-					    <li>${memId}</li>
+					    <li>${msg}</li>
+					    <li><b><a href="/KH/song/main/message.do">쪽지함</a></b>
 						<li><a href="#">로그아웃</a></li><!--
 					 --><li><a href="#">사이트맵</a></li>
 					</ul>
@@ -119,38 +127,40 @@
 			</c:choose>
 	    </div>
 	</nav>
-	    <div id="two">
-			<c:choose>
-				<c:when test="${memId.equals('admin')}">
-					<ul class="menu">
-					  	<li><a href="#">신상관리</a>
-					  		<ul class="sub">
-								<li><b><a href="#">신상정보</a></b></li>
-								<li><b><a href="#">학력정보</a></b></li>
-							</ul>
-						</li><!--
-					 --><li><a href="#">학사관리</a></li><!--
-					 --><li><a href="#">이력관리</a></li>
-					 	<li><a href="#">자기소개서관리</a></li>
-						<li><a href="#">취업정보</a></li><!--
-					 --><li><a href="#">커뮤니티</a></li>
-					</ul>
+	<div id="wrap">
+	<div id="header">
+			<div class="nav"> 
+				<c:choose>
+				<c:when test="${msg.equals('admin')}">
+					<li class="navi_set">  
+						<div class="topnav">신상관리</div>
+						<ul class="subnav">  
+							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
+							<li><a href"#">학력정보</a></li>
+						</ul>
+					</li><!--
+					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
+					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
+					 	<li class="navi_set"><div class="topnav">자기소개서관리</div></li>
+						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
+					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:when>
 				<c:otherwise>
-					<ul class="menu">
-					  	<li><a href="#">신상관리</a>
-					  		<ul class="sub">
-								<li><a href="#">신상정보</a></li>
-								<li><a href="#">학력정보</a></li>
-							</ul>
-						</li><!--
-					 --><li><a href="#">학사관리</a></li><!--
-					 --><li><a href="#">이력관리</a></li>
-					 <li><a href="#">자기소개서관리</a></li>
-					 <li><a href="#">취업정보</a></li><!--
-					 --><li><a href="#">커뮤니티</a></li>
-					</ul>
+					<li class="navi_set">  
+						<div class="topnav">신상관리</div>
+						<ul class="subnav">  
+							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
+							<li><a href"#">학력정보</a></li>
+						</ul>
+					</li><!--
+					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
+					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
+					 	<li class="navi_set"><div class="topnav">자기소개서관리</div></li>
+						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
+					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:otherwise>
-			</c:choose>
-	    </div>
+				</c:choose>
+			</div>
+	</div>
+</div>
 </body>
