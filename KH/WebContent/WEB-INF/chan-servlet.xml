@@ -42,7 +42,7 @@
 	</bean> 
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-  		<property name="prefix" value="/WEB-INF/views/" />
+  		<property name="prefix" value="/WEB-INF/views/career/" />
   		<property name="suffix" value=".jsp" />
   		<property name="order" value="2" />
   	</bean>
@@ -58,12 +58,27 @@
 
 	<!-- 이력관리 -->
 	<context:component-scan base-package="license.controller" />
-	<bean class="license.FileController"/>
 	<bean class="license.ActivityController"/>
 	<bean class="license.AwardController"/>
 	<bean class="license.EducationController"/>
 	<bean class="license.LicenseController"/>
-	<bean class="license.LicenseDAO">
+	<bean id="dao" class="license.LicenseDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+	<bean id="dao1" class="license.KindsDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="dao2" class="license.ActivityServiceDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="dao3" class="license.AwardDAO">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="dao4" class="license.EducationDAO">
 	<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	

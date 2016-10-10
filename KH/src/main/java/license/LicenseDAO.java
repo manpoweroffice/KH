@@ -5,7 +5,7 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 public class LicenseDAO extends SqlSessionDaoSupport {
 
-public int upload(LicenseVo vo){
+public int upload2(LicenseVo vo){
 
 	return getSqlSession().insert("license.license1",vo);
 	

@@ -3,32 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="license"> 
-	
-<!-- <select id="selectAll" resultType="spring.jdbc.User">
- select * from member2
-</select>
-
-<select id="countMem" resultType="int">
-select count(*) from member2
-</select>
-
-<select id="selectOne" resultType="spring.jdbc.User">
- select * from member2 where memberid = #{memberid} 
-</select>
- 
-<insert id="insert" parameterType="spring.jdbc.User">
-insert into member2 values
-(#{memberid},#{password},#{name},#{email})
-</insert>
-
-<update id="update" parameterType="HashMap">
-update member2 set name = #{name} where memberid = #{memberid}
-</update>
-
-<delete id="delete" parameterType="spring.jdbc.User">
-delete from member2 where memberid = #{memberid}
-</delete>   -->
-      
+	      
 <insert id="license1" parameterType="license.LicenseVo">
 insert into license(stu_num, kinds, publisher, dates, reg_date) values
 (#{stu_num},#{kinds},#{publisher},#{dates}, sysdate)
@@ -38,5 +13,10 @@ insert into license(stu_num, kinds, publisher, dates, reg_date) values
 insert into storage(stu_num, file_name, path, type) values
 (#{stu_num},#{file_name},#{path},#{type})
 </insert>
+
+<select id="getJobList" parameterType="String" resultType="license.KindsVo">
+	select * from jobcode where kinds like '%'||#{jobcode}||'%'
+</select>
+
 
 </mapper>    

@@ -2,8 +2,6 @@ package license;
 
 import java.io.File;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,29 +9,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
  
 @Controller
 public class LicenseController {
 	@Autowired
 	private LicenseDAO dao; 
-
+	@Autowired
+	private KindsDAO dao1;
+	
 public void setDao(LicenseDAO dao){
 	this.dao = dao;
 }
 
-@RequestMapping(value="/career/license.do", method=RequestMethod.GET)
+public void setDao1(KindsDAO dao1){
+	this.dao1 = dao1;
+}
 
-public String form(){
+@RequestMapping(value="/career/kindsForm.do",method=RequestMethod.POST)
+public ModelAndView getJobList(String jobcode, String parentId){
+	
+	String id = (parentId.equals("undefined"))? "1": parentId;
+
+	 ModelAndView mav =  new ModelAndView("kindsForm");
+	 List<KindsVo> jobList = dao1.getJobList(jobcode);
+	 mav.addObject("jobList", jobList);
+	 mav.addObject("parentId", id);
+	 return mav;
+}
+
+@RequestMapping(value="/career/kindsForm.do",method = RequestMethod.GET)
+public String kindsForm(){
+	return "kindsForm";
+}
+
+@RequestMapping(value="/career/sendKinds.do",method = RequestMethod.GET)
+public String sendKinds(String kinds){
+	
+	return "redirect:kindsForm?check=n";
+}
+
+@RequestMapping(value="/career/license.do", method=RequestMethod.GET)
+public String licenseform(){
 	return "career/licenseForm";
 }
 
 @RequestMapping(value="/career/license.do", method=RequestMethod.POST)
-public String submitReport2(MultipartHttpServletRequest request)
-//파일타입이건 일반 파라미터타입이건 MultipartHttpServletRequest 에 저장
+public String submit(MultipartHttpServletRequest request) //파일타입이건 일반 파라미터타입이건 MultipartHttpServletRequest 에 저장
 {
-	/*String studentNumber = request.getParameter("studentNumber"); 전송된 타입이 파라미터 값이면 getParameter 메소드 사용*/	
-	
+
 	// 넘어온 파일을 리스트로 저장
 	List<MultipartFile> report = request.getFiles("uploadfile"); 
 	if(report.size() == 1 && report.get(0).getOriginalFilename().equals("")){
@@ -59,24 +85,21 @@ public String submitReport2(MultipartHttpServletRequest request)
 			
 			File path = new File("C:/upload/"+name); // 파일경로
 			try{
-				 report.get(i).transferTo(path);
+				report.get(i).transferTo(path);
 				LicenseVo vo = new LicenseVo(stu_num, kinds, publisher, dates);
 				StorageVo vo1 = new StorageVo(stu_num, file_name, path.getPath(), type);
-				dao.upload(vo); // 자격증
+				dao.upload2(vo); // 자격증
 				dao.upload1(vo1); // 저장소 
+				
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-		}
-		
+		}	
 	}
-	
-	upload(report);
 	return "career/licenseForm";
 }
-
 public void upload(List<MultipartFile> report){
 	
 }
-
 }
+

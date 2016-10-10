@@ -1,110 +1,207 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="//code.jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../resources/naverEditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script>
-$(function(){
-	//전역변수
-	var obj=[];
-	//스마트 에디터 프레임 생성
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef:obj,
-		elPlaceHolder:"content",
-		sSkinURI :"../resources/naverEditor/SmartEditor2Skin.html",
-		htParams:{
-			//툴바 사용 여부 (true: 사용/ false: 사용하지 않음)
-			bUseToolbar : true,
-			//입력창 크기 조절바 사용 여부 (true: 사용/ false: 사용하지 않음)
-			bUseVerticalResizer:true,
-			//모드 탭(Editor| HTML | TEXT) 사용 여부 (true: 사용/ false: 사용하지 않음)
-			bUseModeChanger : true,
-		}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>자격증등록</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript" language="javascript"></script>
+    
+<script type="text/javascript">
+
+//봉사활동
+$(document).ready(function(){
+	
+	$('.del_button').click(function(){
+	
+$('.chkBox:checked').each(function() { 
+	var id= $(this).attr("id");
+	$("#"+id).remove();
+});
 	});
-	$("#saveBtn").click(function(){
-		//id가 content인 textarea에 에디터에서 대입
-		obj.getById["content"].exec("UPDATE_CONTENTS_FIELD",[]);
-		//폼 submit
-		$("#frm").submit();
-	})
+
 })
-</script>
-<style>
-p {
-	font-size: 10pt;
-	margin: 0px;
+
+//사회활동
+$(document).ready(function(){
+	
+	$('.del_button2').click(function(){
+	
+$('.chkBox1:checked').each(function() { 
+	var id= $(this).attr("id");
+	$("#"+id).remove();
+});
+	});
+
+})
+
+function setKinds1(kinds){
+	var kind = kinds;
+	document.getElementById("kinds1").value=kinds
+	
 }
+var count = 2;
+
+//봉사활동
+function addrow() {
+	
+	
+	ta = document.getElementById('ta');
+	
+	row = ta.insertRow(ta.rows.length);
+	row.setAttribute("id",count);
+	cell1 = row.insertCell(0);
+	cell2 = row.insertCell(1);
+	cell3 = row.insertCell(2);
+	cell4 = row.insertCell(3);
+	cell5 = row.insertCell(4);
+	cell1.innerHTML = '<input type="checkbox" class="chkBox" id="'+count+'"> <input type="text" id="kinds'+count+'" required="required" placeholder="과목">'; 
+	cell2.innerHTML = '<input type="text" name="publisher" required="required" placeholder="기관">';
+	cell3.innerHTML = '<input type="text" name="dates" required="required" placeholder="내용">';
+	cell4.innerHTML = '<input type="text" name="uploadfile" required="required" placeholder="기간">';
+	cell5.innerHTML = '<input type="text" name="uploadfile" required="required" placeholder="내용">';
+	count++;
+}
+
+
+//사회활동
+function addrow2() {
+	
+	
+	ta = document.getElementById('ta1');
+	
+	row = ta.insertRow(ta.rows.length);
+	row.setAttribute("id",count);
+	cell1 = row.insertCell(0);
+	cell2 = row.insertCell(1);
+	cell3 = row.insertCell(2);
+	cell4 = row.insertCell(3);
+	cell1.innerHTML = '<input type="checkbox" class="chkBox1" id="'+count+'"> <input type="text" id="kinds'+count+'" required="required" placeholder="과목">'; 
+	cell2.innerHTML = '<input type="text" name="publisher" required="required" placeholder="기관">';
+	cell3.innerHTML = '<input type="text" name="dates" required="required" placeholder="차">';
+	cell4.innerHTML = '<input type="text" name="uploadfile" required="required" placeholder="차차">';
+	count++;
+}
+
+ 
+//자격증검색
+function licenseCheck(){
+	url="kindsForm.do?check=y";	
+    window.open(url,"post","left=100,top=100,width=800,height=800,toolbar=no,directories=no,status=yes,scrollbars=yes,menubar=no,fullscreen=no,resizable=no");
+}
+
+
+</script>
+
+<style type="text/css">
+#ta{
+
+text-align:center;
+}
+div{
+position: relative;}
+div #right{
+	position:absolute;
+	right: 0px;
+}    
 </style>
-<title>수강</title>
-</head> 
+
+<style type="text/css">
+#ta1{
+
+text-align:center;
+}
+div{
+position: relative;}
+div #right{
+	position:absolute;
+	right: 0px;
+}    
+</style>
+
+</head>
 <body>
-	<div style="width: 1200px; height: 500px; margin: auto;">
-		<div style="text-align: right; position: relative;">봉사활동</div>
-		<table border="1" width="1200" cellpadding="0" cellspacing="0"
-			align="center">
-			<tr height="30"">
-				<td align="center" width="50"><p>종류</p></td>
-				<td align="center" width="100"><p>장소</p></td>
+<div style="width: 1200px; height: 500px; margin: auto;">
+<!-- <div style="text-align: left; position: relative;"> -->
+<!-- <div style="text-align: ; position: relative;">검색창이 들어올 자리</div> -->
+<div style="text-align: right; position: relative;">봉사활동</div>
+<form action="award.do" enctype="multipart/form-data" method="post">
+		 <table id="ta" border="1" width="1200" cellpadding="0" cellspacing="0" align="center"> 
+			<tr height="40">
+				<td align="center" width="300"><p>종류</p></td>
+				<td align="center" width="400"><p>장소</p></td>
 				<td align="center" width="200"><p>기간</p></td>
-				<td align="center" width="50"><p>지역</p></td>
-				<td align="center" width="50"><p>시간</p></td>
-				
+				<td align="center" width="500"><p>지역</p></td>
+				<td align="center" width="200"><p>시간</p></td>
 			</tr>
-
-			
-				<tr height="30"">
-					<td colspan="5">
-				</tr>
 		
+			
+			<tr height="20" id="1" >
+				<td align="center" width="300"><p><input type="checkbox" class="chkBox"id ="1"> <input type="text" id="kinds1" required="required" placeholder="과목"></td>
+				<td align="center" width="400"><p><input type="text" name="publisher" required="required" placeholder="기관"></p></td>
+				<td align="center" width="200"><p><input type="text" name="dates" required="required" placeholder="내용"></p></td>
+				<td align="center" width="500"><p><input type="text" name="uploadfile" required="required" placeholder="기간"></p></td>	
+				<td align="center" width="200"><p><input type="text" name="dates" required="required" placeholder="내용"></p></td>
+			</tr>
+			</table>
+			
+<div> 
+<span id="left">
+ <input type="button" value="추가" Onclick="addrow()" style="cursor:hand ">
+ <input type="button" value="삭제" class="del_button" style="cursor:hand">		
+ </span>
+ <span id="right">
+ <input type="button" value="수정" style="cursor:hand">	
+ <input type="submit" value="등록" style="cursor:hand" >
+ <input type="reset" value="취소" style="cursor:hand">	
+ </span>
+</div>
+</form>
+</div>
 
-			
-				<tr height="30">
-					<td align="center" width="100"></td>
-					<td align="center" width="100"></td>
-					<td align="center" width="200"></td>
-					<td align="center" width="50"></td>
-					<td align="center" width="50"></td>
-			
-				</tr>
-		
-		</table>
-		<div style="text-align: right; position: relative;">사회경험</div>
-		<table border="1" width="1200" cellpadding="0" cellspacing="0"
-			align="center">
-			<tr height="30"">
+<div style="width: 1200px; height: 500px; margin: auto;">
+<!-- <div style="text-align: left; position: relative;"> -->
+<!-- <div style="text-align: ; position: relative;">검색창이 들어올 자리</div> -->
+<div style="text-align: right; position: relative;">사회활동</div>
+<form action="award.do" enctype="multipart/form-data" method="post">
+		 <table id="ta1" border="1" width="1200" cellpadding="0" cellspacing="0" align="center"> 
+			<tr height="40">
 				<td align="center" width="50"><p>회사명</p></td>
 				<td align="center" width="100"><p>근무기간</p></td>
 				<td align="center" width="200"><p>업무내용</p></td>
 				<td align="center" width="50"><p>직급</p></td>
-				
 			</tr>
+		
 			
+			<tr height="20" id="1" >
+				<td align="center" width="500"><p><input type="checkbox" class="chkBox"id ="1"> <input type="text" id="kinds1" required="required" placeholder="과목"></td>
+				<td align="center" width="500"><p><input type="text" name="publisher" required="required" placeholder="기관"></p></td>
+				<td align="center" width="300"><p><input type="text" name="dates" required="required" placeholder="내용"></p></td>
+				<td align="center" width="50"><p><input type="text" name="uploadfile" required="required" placeholder="기간"></p></td>	
+			</tr>
+			</table>
 			
-				<tr height="30"">
-					<td colspan="4">
-				</tr>
-			
+<div> 
+<span id="left">
+ <input type="button" value="추가" Onclick="addrow2()" style="cursor:hand ">
+ <input type="button" value="삭제" class="del_button2" style="cursor:hand">		
+ </span>
+ <span id="right">
+ <input type="button" value="수정" style="cursor:hand">	
+ <input type="submit" value="등록" style="cursor:hand" >
+ <input type="reset" value="취소" style="cursor:hand">	
+ </span>
+</div>
+</form>
+</div>
 
-		
-				<tr height="30">
-					<td align="center" width="100"></td>
-					<td align="center" width="100"></td>
-					<td align="center" width="200"></td>
-					<td align="center" width="50"></td>
-					
-				</tr>
-		
-		</table>
-	
-<form:form action="" id="frm">
-<p>회사명 : <input type="text" id="bussnm" name="bussnm" size=70></p>
-<p>자격요건 : <input type="text" id="cer" name="cer" size="70"></p>
-<p>연봉 : <input type="text" id="sal" name="sal"></p>
-<p>내용</p>
-<textarea name="content" id="content" rows="10" cols="100" style="width:766px; height:412px;"></textarea>
-<input type="submit" id="saveBtn" value="글 쓰기"/>
-</form:form>
-</html>
+</body>
+</html> 
+
+
+
+
+
+
+
+
+

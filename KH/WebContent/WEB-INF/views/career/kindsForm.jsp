@@ -6,75 +6,72 @@
 <title>우편번호검색</title>
 <link href="../style.css" rel="stylesheet" type="text/css">
 <script> 
-	function dongCheck() {
-		if (document.zipForm.area4.value == "") {
-			alert("도로명 주소를 입력하세요");
-			document.zipForm.area4.focus();
+	function jobCheck() {
+		if (document.jobForm.jobcode.value == "") {
+			alert("취득하신 자격증을 입력하여 주세요.");
+			document.jobForm.jobcode.focus();
 			return;
 		}
-		document.zipForm.submit();
+		
+		document.jobForm.submit();
 	}
 
-	function sendAddress(zipcode, area1, area2, area3 ,area4) {
-		var address=area1+" "+area2+" "+area3+" "+area4;
-		opener.document.userinput.zipcode.value = zipcode;
-		opener.document.userinput.address.value = address;
-		self.close();
+
+	
+	function deleteToken(){
+		if('${param.check}'== 'y'){
+			document.getElementById("simpletext").value = "자격증을 입력하세요";
+		}
+
+		
+	}
+	function sendKind(kinds){
+		var kind = kinds;
+		var id= '${parentId}';
+		opener.setKinds1(kind,id);
+		this.close();
+		
 	}
 </script>
 </head>
-<body>
-<center>
-<div class="title" >
-	<b><center>우편번호 찾기</center></b>
-</div>
-<form name="zipForm" method="post" action="Zipcheck.do">
-<table>
-<tr>
-	<td><br> 도로명 주소 입력 : <input name="area4" type="text">
-						<input type="button" value="검색" onclick="dongCheck();" class="button">
-						<input type="hidden" name="check" value="n">
-						</td>
+<body onload="deleteToken()">
+	<center>
+		<div class="title">
+			<b><center>자격증 조회</center></b>
+		</div>
+		<form name="jobForm" method="post" action="kindsForm.do">
+			<table>
+				<tr>
+					<td><br>입력 : <input name="jobcode" type="text"> <input
+						type="button" value="검색" onclick="jobCheck();" class="button">
+						<input type="hidden" name="check" value="n"></td>
 				</tr>
 
-			<c:if test="${check=='n'}">
-			
-				<c:if test="${totalList==0 }">
-				<tr>
-					<td align="center" class="colorblack"><br>검색된 결과가 없습니다.</td>
-				</tr>
-				</c:if>
-				
-				<c:if test="${totalList!=0 }"> 
-				<tr>
-					<td align="center" class="colorblack"><br> ※검색 후, 아래 우편번호를 클릭하면 자동으로 입력됩니다.</td>
-				</tr>
-		
-			<c:forEach var="i" items="${zipcodeList}">
-				<c:set var="tempZipcode" value="${i.zipcode}" />
-				<c:set var="temptArea1" value="${i.area1}"/>
-				<c:set var="temptArea2" value="${i.area2}"/>
-				<c:set var="temptArea3" value="${i.area3}"/>
-				<c:set var="temptArea4" value="${i.area4}"/>
-			<tr>
-				<td>
-				<a href="javascript:sendAddress('${tempZipcode}','${temptArea1}', '${temptArea2}','${temptArea3}','${temptArea4}')">
-	${tempZipcode}&nbsp;${temptArea1}&nbsp;${temptArea2}&nbsp; ${temptArea3}&nbsp; ${temptArea4}</a><br>
-					
-				</td>
-				</tr>
+				<%-- joblist::${jobList}  --%>
+
+				<c:forEach var="jobList" items="${jobList}">
+
+					<tr>
+						<td><a href="javascript:sendKind('${jobList.kinds}')"onclick="sendKind(${jobList.kinds})">${jobList.kinds}</a></td>
+					</tr>
 				</c:forEach>
-				</c:if>	
-			</c:if>
-			</td>
-			</tr>	
-			<tr>
-				<td align="center" class="colorblack"><br>
-				<a href="javascript:this.close();" class="button" >닫기</a>
-			<tr>
-				</td>
-		</table>
-	</form>
+				<tr>
+					<c:if test="${empty jobList}">
+						<td style="text-align: center"  >
+							<input type="text" id="simpletext" value="잘못된 자격증입니다" style="border:none;text-align: center" readonly="readonly">
+						<td>
+						
+					</c:if>
+				</tr>
+				<tr>
 
+					<td align="center" class="colorblack"><br> <a
+						href="javascript:this.close();" class="button">닫기</a></td>
+				</tr>
+
+			</table>
+			<input type="hidden" name="parentId" value="${param.parentId}">
+		</form>
 </body>
 </html>
+
