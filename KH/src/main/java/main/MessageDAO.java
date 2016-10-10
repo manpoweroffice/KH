@@ -14,6 +14,14 @@ public class MessageDAO extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("message.selectList2", stu_num);
 	}
 	
+	public List<MessageCommand> selectList3(String stu_num){
+		return getSqlSession().selectList("message.selectList3", stu_num);
+	}
+	
+	public int selectOne3(String stu_num){
+		return getSqlSession().selectOne("message.selectOne3", stu_num);
+	}
+	
 	public MessageCommand selectOne(int m_num){
 		return getSqlSession().selectOne("message.selectOne", m_num);
 	}

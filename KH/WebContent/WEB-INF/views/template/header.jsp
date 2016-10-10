@@ -69,7 +69,7 @@ ul, li{list-style:none;}
 
 </style>
 <script>
-$(document).ready(function(){  
+$(function(){  
   
 	$(".topnav").hover(function() { //마우스를 topnav에 오버시
 		$(this).parent().find(".subnav").slideDown('normal').show(); //subnav가 내려옴.
@@ -77,20 +77,24 @@ $(document).ready(function(){
 		}, function(){  
 			$(this).parent().find(".subnav").slideUp('fast'); //subnav에서 마우스 벗어났을 시 원위치시킴  
 		});  
-	});  
-  
-});  
-    $(function(){
-    	$('#example').popover('hide')
-    	
-	    var auto_refresh = setInterval(
-	    function (){
-	    	$('.num').load('refresh.html').fadeIn("slow");
-	    }, 1000); // 새로고침 시간 1000은 1초를 의미합니다.
-    
-    });  
-    
+	});
 	
+    	var url="/KH/song/header.do";
+    	var params="dumi="+new Date();
+        $.ajax({
+    		type:"post" //포스트 방식
+    			,url:url	//url 주소
+    			,data:params
+    			,dataType:"json"
+            ,success : function(obj) {
+    			$("#num").append("<span class=\"badge badge-important\">"+idx+"</span>");
+            },
+            error : function(xhr, status, error) {
+                console.log(error);
+            }
+        }); 
+    });
+
 </script>
 <body>
 	<div>
@@ -99,12 +103,10 @@ $(document).ready(function(){
 	</a>
 	</div>
 	<div class="belldiv">
-	<a data-toggle="popover" title="제목" data-content="안녕하세요." data-placement="bottom" id="example">
+	<a data-toggle="popover" data-placement="bottom" id="example">
 			<img src="../../image/bell.jpg" id="bell"></a>
 	</div>
-	<div class="num">
-		<span class="badge badge-important">2</span>
-	</div>
+	<div class="num"></div>
 	<nav>
 	    <div id="one">
 			<c:choose>

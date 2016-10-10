@@ -6,9 +6,8 @@
 <title>Success Form</title>
 </head>
 <body>
-	
 	<h2>${msg} 님 환영합니다.</h2> </br>
 	Login success.
-	
+
 </body>
 </html>
