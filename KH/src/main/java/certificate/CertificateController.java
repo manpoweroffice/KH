@@ -1,6 +1,5 @@
 package certificate;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -21,18 +20,17 @@ public class CertificateController {
 	}
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView form(@ModelAttribute CertificateCommand command){
-		String stu_num="100101";
+		String stu_num="160101";
 		command=certificateDao.select_c(stu_num);
 		String gradu_date=command.getGradu_date();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd",java.util.Locale.getDefault());
 		Date date=new Date();
-		String thisdate=dateFormat.format(date);
 		String college_state=command.getCollege_state();
+		String thisdate=dateFormat.format(date);
 		int compare = thisdate.compareTo(gradu_date);
-		
-		command= new CertificateCommand(stu_num,college_state,gradu_date,command.getDepartment(),command.getMajor(),
-				command.getKo_name(),command.getEn_name(),command.getBirthday());
-		
+		System.out.println("compare::"+compare);
+		command= new CertificateCommand(command.getStu_num(),command.getDepartment(),command.getMajor(),command.getKo_name(),
+				command.getEn_name(),command.getBirthday(),command.getGradu_date(),college_state);
 		if(compare>0){//Á¹¾÷
 			certificateDao.update_state(command);
 		}
