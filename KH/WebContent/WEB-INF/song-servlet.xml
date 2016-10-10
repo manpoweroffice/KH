@@ -70,5 +70,8 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- 알림 -->
+	<bean id="header" class="main.HeaderController" p:messagedao-ref="messagedao" p:studentdao-ref="studentdao"/>
+	
 </beans>
 

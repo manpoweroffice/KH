@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>KH인트라넷</title>
+
 <style>
 	.layoutTable{
 		width: 1600px;
@@ -11,7 +12,7 @@
 </head>
 <body class="no">
 	<table class="layoutTable">
-		<tr>
+		<tr id="header">
 			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
 		<tr>

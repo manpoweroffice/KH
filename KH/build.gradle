@@ -25,5 +25,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-orm', version: '4.2.7.RELEASE'
     
 	compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.5'
+	compile group: 'net.sf.json-lib', name: 'json-lib-ext-spring', version: '1.0.2'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.3'
     
 }
