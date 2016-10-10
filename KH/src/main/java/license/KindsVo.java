@@ -1,5 +1,6 @@
 package license;
 
+
 public class KindsVo {
  
 	private String kinds; // 자격증이름

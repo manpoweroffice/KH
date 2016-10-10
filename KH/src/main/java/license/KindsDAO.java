@@ -15,4 +15,5 @@ public class KindsDAO  extends SqlSessionDaoSupport {
 
 		return jobList;
 	}
+	
 }

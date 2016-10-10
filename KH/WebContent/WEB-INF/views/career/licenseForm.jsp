@@ -31,7 +31,6 @@ function setKinds1(kinds, id){
 var count = 2;
 function addrow() {
 	
-	
 	ta = document.getElementById('ta');
 	
 	row = ta.insertRow(ta.rows.length);

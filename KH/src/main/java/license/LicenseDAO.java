@@ -15,3 +15,4 @@ public int upload1(StorageVo vo1){
 	return getSqlSession().insert("license.license2",vo1);
 }
 }
+ 
