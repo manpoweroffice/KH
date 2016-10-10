@@ -1,21 +1,24 @@
 package register;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class Class_BasketDAO extends SqlSessionDaoSupport{
 	
-	public List<Class_BasketBean> selectAll() {
-		return getSqlSession().selectList("classMapper.selectAll");
+	//미리담기 -전공선택기간 
+	public List<Class_BasketBean> selectMajor(Map dept){
+		return getSqlSession().selectList("classMapper.selectMajor", dept);
 	}
-	
-	public int insert() {
-		return getSqlSession().insert("classMapper.test");
+	//미리담기- 기타 선택기간
+	public List<Class_BasketBean> selectMinor(Map dept){
+		return getSqlSession().selectList("classMapper.selectMinor",dept);
 	}
-	
+	//미리담기 - 담은목록에 있는 것들을 가지고옴
+	public List<Class_BasketBean> checklist(String stu_num){
+		return getSqlSession().selectList("classMapper.checkList",stu_num);
+	}
 	//준영-출석부분
 	//출석부 인설트
 	public int insertAttend(AttendanceVo attend){

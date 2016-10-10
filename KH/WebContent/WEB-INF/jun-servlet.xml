@@ -40,6 +40,14 @@
 		<property name="order" value="1" />
 	</bean> 
 	
+	
+	<bean id="timeLimitCheckInterceptor" class="register.TimeLimitCheckInterceptor"></bean>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/register/classbasket.do"/>
+			<ref bean="timeLimitCheckInterceptor"></ref>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
   		<property name="prefix" value="/WEB-INF/views/" />
   		<property name="suffix" value=".jsp" />
@@ -62,8 +70,9 @@
 	<bean class="job.BusinessController" p:bussDao-ref="bussDao"></bean>
 	<bean class="util.PhotoController"></bean>
 	<bean class="register.Attend_CheckController"></bean>
-	
-
-
+	<bean class="register.Class_BasketController" p:classDAO-ref="classDAO"></bean>
+	<bean id="classDAO" class="register.Class_BasketDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 </beans>
 

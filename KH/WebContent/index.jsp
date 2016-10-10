@@ -14,7 +14,7 @@
 <br>
 <a href="chan/career/file.do">파일시험</a>
 
-<a href="jun/register/Attend_Check.do">출석체크</a>
-
+<a href="jun/register/Attend_Check.do">출석체크</a><br>
+<a href="jun/register/classbasket.do">수강신청</a>
 </body>
 </html>

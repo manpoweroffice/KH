@@ -11,7 +11,7 @@ public class Class_BasketBean {
 	private String lecture_time;
 	private int application;
 	private int appli_limit;
-
+	private Reserve_ListVo reserve_list;
 	public Class_BasketBean(){}
 	public Class_BasketBean(String lecture_code,String prof_code,String lecture_name,String diagnosis,int grade,int time,String prof_name,String lecture_time,int application,int appli_limit){
 		this.lecture_code=lecture_code;
@@ -103,4 +103,11 @@ public class Class_BasketBean {
 	public void setDiagnosis(String diagnosis) {
 		this.diagnosis = diagnosis;
 	}
+	public Reserve_ListVo getReserve_list() {
+		return reserve_list;
+	}
+	public void setReserve_list(Reserve_ListVo reserve_list) {
+		this.reserve_list = reserve_list;
+	}
+	
 }

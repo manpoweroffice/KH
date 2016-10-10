@@ -3,17 +3,34 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="classMapper">
-	
+	<resultMap type="register.Reserve_ListVo" id="reserve_list">
+		<result property="stu_num" column="stu_num"/>
+		<result property="lecture_code" column="lecture_code"/>
+	</resultMap>
+	<resultMap type="register.Class_BasketBean" id="class_basketBean">
+		<result property="lecture_code" column="lecture_code"/>
+		<result property="prof_code" column="prof_code"/>
+		<result property="lecture_name" column="lecture_name"/>
+		<result property="diagnosis" column="diagnosis"/>
+		<result property="grade" column="grade"/>
+		<result property="time" column="time"/>
+		<result property="prof_name" column="prof_name"/>
+		<result property="lecture_time" column="lecture_time"/>
+		<result property="application" column="application"/>
+		<result property="appli_limit" column="appli_limit"/>
+		<collection property="reserve_list" resultMap="reserve_list"/>
+	</resultMap>
 	<!-- 출석부 -->
 	<insert id="insertAttend" parameterType="register.AttendanceVo">
 		insert into attendance(stu_num,stu_name,attendance,lecture_code,atd_date)
 	 	values(#{stu_num},#{stu_name},#{attendance},#{lecture_code},#{atd_date});
 	</insert>
 	
-	<!-- 수강신청  -->
+	<!-- 미리담기 -->
 	<insert id="insertLect" parameterType="register.Reserve_ListVo">
 		insert into reserve_list values(#{stu_num},#{lecture_code})
 	</insert>
+	
 	
 	<!-- 수강신청 확정된 강의를 수강 중인 강의 테이블로 인설트  -->
 	<insert id="insertRegLect" parameterType="register.Reg_LectureVo">
@@ -28,7 +45,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set>
 		where stu_num=#{stu_num} and atd_date=#{atd_date}
 	</update>
-	
+	<!-- 미리담기에서 신청 학생수 증가 -->
+	<update id="increaseApp" parameterType="String">
+		update lecture
+		<set>
+		application=application+1
+		</set>
+		where lecture_code=#{lecture_code} 
+	</update>
 	<!-- 수강신청 수강포기 -->
 	<delete id="deleteLect" parameterType="String">
 		delete reserve_list where stu_num=#{stu_num}
@@ -37,10 +61,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteRegLect" parameterType="String">
 		delete reg_lecturce where term=#{term}
 	</delete>
-	<select id="selectAll" resultType="register.Class_BasketBean">
+	<!-- 미리담기 -전공신청 -->
+	<select id="selectMajor" parameterType="map" resultType="register.Class_BasketBean">
 		select * from LECTURE
+	<where>
+	 lecture_code like '${term}${hakcode}__' 
+	 <if test="list.size()>0">
+		and lecture_code not in
+		<foreach collection="list" item="item" open="(" close=")" separator="," >
+			#{item}
+		</foreach>
+	</if>
+	  or lecture_code like '${term}___99'
+	<if test="list.size()>0">
+		and lecture_code not in
+		<foreach collection="list" item="item" open="(" close=")" separator="," >
+			#{item}
+		</foreach>
+		</if>
+	</where>	
 	</select>
-	
+	<!-- 미리담기 - 부전공신청 -->
+	<select id="selectMinor" parameterType="map" resultType="register.Class_BasketBean">
+		select * from LECTURE 
+	<where>
+		lecture_code like '${term}%' and lecture_code not like '${term}${hakcode}__' 
+	<if test="list.size()>0">
+		and lecture_code not in
+		<foreach collection="list" item="item" open="(" close=")" separator="," >
+			#{item}
+		</foreach>
+		</if>	
+		or lecture_code like '${term}%' and lecture_code like '${term}___99'
+		<if test="list.size()>0">
+		and lecture_code not in
+		<foreach collection="list" item="item" open="(" close=")" separator="," >
+			#{item.lecture_code}
+		</foreach>
+		</if>
+	</where> 
+	</select>
+	<!-- 미리담기에서 담은 목록을 제거하기위해 가지고옴 -->
+	<select id="checkList" parameterType="String" resultMap="class_basketBean">
+		select*from lecture natural join reserve_list where stu_num=#{stu_num}
+	</select>
 	<select id="selectLecCode" parameterType="String" resultType="register.Reg_LectureVo">
 		select lecture_code from lecture where prof_code=#{prof_code}
 	</select>

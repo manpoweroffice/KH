@@ -11,4 +11,21 @@ public class Reserve_ListVo {
 			this.stu_num=stu_num;
 			this.lecture_code=lecture_code;
 	}
+
+	public String getStu_num() {
+		return stu_num;
+	}
+
+	public void setStu_num(String stu_num) {
+		this.stu_num = stu_num;
+	}
+
+	public String getLecture_code() {
+		return lecture_code;
+	}
+
+	public void setLecture_code(String lecture_code) {
+		this.lecture_code = lecture_code;
+	}
+	
 }

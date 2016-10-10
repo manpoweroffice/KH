@@ -13,6 +13,7 @@ request.setCharacterEncoding("UTF-8");
 $(function(){
 	var url="<%=cp%>/jun/Class_Basket.do";
 	var params= "dumi"+new Date();
+	
 	$.ajax({
 		type:"post",
 		url:url,
@@ -34,7 +35,7 @@ $(function(){
 				<input type="submit" value="검색">
 			</div>
 		</form>
-		<from action="" method="post" name="checkList">
+		<from action="/KH/jun/register/classbasket.do" method="post" name="checkList">
 		<table border="1" width="1180px" cellpadding="0" cellspacing="0">
 			<tr height="30"">
 				<td align="center" width="50">체크</td>
@@ -53,15 +54,15 @@ $(function(){
 				<c:forEach var="search" items="${searchList}">
 					<tr height="30">
 						<td align="center" width="50"><input type="checkbox"
-							name="lecCheck" value="${search.lecture_code }"></td>
-						<td align="center" width="130">${search.lecture_code }</td>
-						<td align="center" width="200">${search.lecture_name }</td>
-						<td align="center" width="50">${search.grade }</td>
-						<td align="center" width="50">${search.time }</td>
-						<td align="center" width="100">${search.prof_name }</td>
-						<td align="center" width="400">${search.lecture_time }</td>
-						<td align="center" width="100">${search.application }</td>
-						<td align="center" width="100">${search.appli_limit }</td>
+							name="lecture_code" value="${search.lecture_code}"></td>
+						<td align="center" width="130">${search.lecture_code}</td>
+						<td align="center" width="200">${search.lecture_name}</td>
+						<td align="center" width="50">${search.grade}</td>
+						<td align="center" width="50">${search.time}</td>
+						<td align="center" width="100">${search.prof_name}</td>
+						<td align="center" width="400">${search.lecture_time}</td>
+						<td align="center" width="100">${search.application}</td>
+						<td align="center" width="100">${search.appli_limit}</td>
 					</tr>
 				</c:forEach>
 			</table>
