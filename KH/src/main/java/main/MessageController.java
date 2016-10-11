@@ -27,10 +27,10 @@ public class MessageController {
 
 	@RequestMapping(value="/main/message", method=RequestMethod.GET)
 	public ModelAndView form(MessageCommand messageCommand, HttpServletRequest request){
-		request.getSession().setAttribute("stu_num", "130101");
 		String stu_num = (String)request.getSession().getAttribute("stu_num");
 		
 		String receive = studentdao.selectOne2(stu_num);
+		
 		List<MessageCommand> messageList = messagedao.selectList(receive);
 
 		return new ModelAndView("main/message", "messageList", messageList);
@@ -55,7 +55,6 @@ public class MessageController {
 	
 	@RequestMapping(value="/main/message_send", method=RequestMethod.GET)
 	public ModelAndView sendForm(MessageCommand messageCommand, HttpServletRequest request){
-		request.getSession().setAttribute("stu_num", "130101");
 		String stu_num = (String)request.getSession().getAttribute("stu_num");
 		
 		String send = studentdao.selectOne2(stu_num);

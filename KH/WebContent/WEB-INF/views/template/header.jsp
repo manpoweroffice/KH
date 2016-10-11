@@ -3,71 +3,9 @@
 <%@ page isELIgnored="false" %>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<link href="../../image/bell.css" rel="stylesheet" media="screen">
-<script src="../../image/bootstrap.js"></script>
-<style>
-*{font-size: 13px;}
-div, ul, li{margin:0px; padding:0px;}
-ul, li{list-style:none;}
-
-#wrap {
-	position: relative;
-	top:-50;
-	left:700;
-}
-
-.nav {
-	height:35px;
-	list-style: none;
-	width:800px;
-	margin:auto;
-	color:#000;
-}
-
-.topnav{
-	text-align:center;
-	width:100px;
-	height:15px;
-	cursor:pointer;
-	font-weight:bold;
-}
-.topnav li:HOVER{
-	background: #000;
-}
-
-.navi_set{
-	float: left;
-	padding:10px;
-	position: relative;
-}
-
-.subnav{
-	position: absolute;
-	left: 0; top: 35px;
-	display: none;
-}
-
-/* li속성 */
-.subnav li{
-	padding:10px;
-	width:100px;
-	text-align:center;
-	cursor:pointer;
-	background: #fff;
-}
-
-/* 마우스 오버 시 라인 색변경*/
-.subnav li:hover{
-	background:#6799FF;
-}
-
-/* 클릭 후 적용 */
-.subnav>li>a{
-	color:#000;
-	text-decoration: none;
-}
-
-</style>
+<link href="../../css/bell.css" rel="stylesheet" media="screen">
+<link href="../../css/template.css" rel="stylesheet" media="screen">
+<script src="../../js/bootstrap.js"></script>
 <script>
 $(function(){  
   
@@ -87,21 +25,34 @@ $(function(){
     			,data:params
     			,dataType:"json"
             ,success : function(obj) {
-    			$("#num").append("<span class=\"badge badge-important\">"+idx+"</span>");
+            	if(obj.data=='0'){
+            		$(".num").remove();
+            	}
+    			$(".num").append("<span class=\"badge badge-important\">"+obj.data+"</span>");
             },
             error : function(xhr, status, error) {
                 console.log(error);
             }
-        }); 
+        });
     });
+function pop1(stu_num){ 
+	var form = document.hearderForm;
+	form.action="/KH/gil/main/main.do";
+	form.method="post";
+	form.stu_num.value=stu_num;
+	form.submit();
+}
 
 </script>
 <body>
+<form name="hearderForm">
 	<div>
-	<a href="#">
+	<input type="hidden" name="stu_num"/>
+	<a href="#" onClick="pop1(${msg})">
 		<img alt="rogo" src="../../image/rogo2.jpg" id="rogo">
 	</a>
 	</div>
+</form>
 	<div class="belldiv">
 	<a data-toggle="popover" data-placement="bottom" id="example">
 			<img src="../../image/bell.jpg" id="bell"></a>
@@ -138,12 +89,16 @@ $(function(){
 						<div class="topnav">신상관리</div>
 						<ul class="subnav">  
 							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
-							<li><a href"#">학력정보</a></li>
+							<li><a href="/KH/yeji/certificate/certificateForm_f.do">학력정보</a></li>
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
 					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
-					 	<li class="navi_set"><div class="topnav">자기소개서관리</div></li>
+					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
+					 		<ul class="subnav">
+					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
+					 		</ul>
+					 	</li>
 						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
 					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:when>
@@ -152,12 +107,17 @@ $(function(){
 						<div class="topnav">신상관리</div>
 						<ul class="subnav">  
 							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
-							<li><a href"#">학력정보</a></li>
+							<li><a href="/KH/yeji/certificate/certificateForm_f.do">학력정보</a></li>
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
 					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
-					 	<li class="navi_set"><div class="topnav">자기소개서관리</div></li>
+					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
+					 		<ul class="subnav">
+					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
+					 			<li><a href="#">컨설팅</a></li>
+					 		</ul>
+					 	</li>
 						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
 					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:otherwise>

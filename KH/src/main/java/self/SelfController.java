@@ -1,5 +1,7 @@
 package self;
 
+import static org.hamcrest.CoreMatchers.anything;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -22,9 +24,7 @@ public class SelfController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView form(@ModelAttribute Self self, HttpServletRequest request){
-		request.getSession().setAttribute("stu_num", "130101");
-		
-		String stu_num = (String)request.getSession().getAttribute("stu_num");
+		String stu_num = (String) request.getSession().getAttribute("msg");
 		
 		self = selfDao.selectOne(stu_num);
 
@@ -38,9 +38,7 @@ public class SelfController {
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String submit(@ModelAttribute Self self, HttpServletRequest request){
-		request.getSession().setAttribute("stu_num", "130101");
-		
-		String stu_num = (String)request.getSession().getAttribute("stu_num");
+		String stu_num = (String) request.getSession().getAttribute("msg");
 		
 		Self self1 = selfDao.selectOne(stu_num);
 

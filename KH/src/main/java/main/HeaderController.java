@@ -33,18 +33,15 @@ public class HeaderController {
 	}
 	
 	@RequestMapping(value="header", method=RequestMethod.POST)
-	
 	public void messageList(HttpServletResponse resp, HttpServletRequest request) throws Exception{
-		request.getSession().setAttribute("stu_num", "130101");
 		String stu_num = (String)request.getSession().getAttribute("stu_num");
-		System.out.println("ASdasdas");
 		String receive = studentdao.selectOne2(stu_num);
 		
 		int num = messagedao.selectOne3(receive);
 		
 		JSONObject jso = new JSONObject(); //JASON 객체 생성
 		jso.put("data", num);
-		
+
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		out.print(jso.toString());//put.print 내용을 ajax의 dataType이 json에게 데이터 쏴줌

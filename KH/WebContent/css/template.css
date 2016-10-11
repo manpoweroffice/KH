@@ -1,0 +1,64 @@
+*{font-size: 13px;}
+div, ul, li{margin:0px; padding:0px;}
+ul, li{list-style:none;}
+
+#wrap {
+	z-index:1000;
+	position: relative;
+	top:-50;
+	left:1000;
+}
+.nav {
+	height:35px;
+	list-style: none;
+	width:800px;
+	margin:auto;
+	color:#000;
+}
+
+.topnav{
+	text-align:center;
+	width:100px;
+	height:15px;
+	cursor:pointer;
+	font-weight:bold;
+}
+.topnav li:HOVER{
+	background: #000;
+}
+
+.navi_set{
+	float: left;
+	padding:10px;
+	position: relative;
+}
+
+.subnav{
+	position: absolute;
+	left: 0; top: 35px;
+	display: none;
+}
+
+/* li속성 */
+.subnav li{
+	padding:10px;
+	width:100px;
+	text-align:center;
+	cursor:pointer;
+	background: #fff;
+}
+
+/* 마우스 오버 시 라인 색변경*/
+.subnav li:hover{
+	background:#6799FF;
+}
+
+/* 클릭 후 적용 */
+.subnav>li>a{
+	color:#000;
+	text-decoration: none;
+}
+
+button{
+	color:#75B3E2;
+}
