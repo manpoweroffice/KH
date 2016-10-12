@@ -93,13 +93,25 @@ function pop1(stu_num){
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
-					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
+					 --><li class="navi_set"><div class="topnav">이력관리</div>
+					 		<ul class="subnav">
+					 			<li><a href="/KH/chan/career/license.do">자격증</a></li>
+					 			<li><a href="/KH/chan/career/education.do">교육훈련</a></li>
+					 			<li><a href="/KH/chan/career/award.do">수상내역</a></li>
+					 			<li><a href="/KH/chan/career/activity.do">기타활동</a></li>
+					 		</ul>
+					 </li>
 					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
 					 		<ul class="subnav">
 					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
 					 		</ul>
 					 	</li>
-						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
+						<li class="navi_set"><div class="topnav">취업정보</div>
+							<ul class="subnav">
+					 			<li><a href="#">취업공고</a></li>
+					 			<li><a href="/KH/jun/job/business.do">기업목록</a></li>
+					 		</ul>
+						</li><!--
 					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:when>
 				<c:otherwise>
@@ -111,14 +123,26 @@ function pop1(stu_num){
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
-					 --><li class="navi_set"><div class="topnav">이력관리</div></li>
+					 --><li class="navi_set"><div class="topnav">이력관리</div>
+					 	<ul class="subnav">
+					 			<li><a href="/KH/chan/career/license.do">자격증</a></li>
+					 			<li><a href="/KH/chan/career/education.do">교육훈련</a></li>
+					 			<li><a href="/KH/chan/career/award.do">수상내역</a></li>
+					 			<li><a href="/KH/chan/career/activity.do">기타활동</a></li>
+					 		</ul>
+					 </li>
 					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
 					 		<ul class="subnav">
 					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
 					 			<li><a href="#">컨설팅</a></li>
 					 		</ul>
 					 	</li>
-						<li class="navi_set"><div class="topnav">취업정보</div></li><!--
+						<li class="navi_set"><div class="topnav">취업정보</div>
+							<ul class="subnav">
+					 			<li><a href="#">취업공고</a></li>
+					 			<li><a href="/KH/jun/job/business.do">기업목록</a></li>
+					 		</ul>
+						</li><!--
 					 --><li class="navi_set"><div class="topnav">커뮤니티</div></li>
 				</c:otherwise>
 				</c:choose>

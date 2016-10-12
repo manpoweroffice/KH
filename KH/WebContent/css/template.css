@@ -13,7 +13,7 @@ ul, li{list-style:none;}
 	list-style: none;
 	width:800px;
 	margin:auto;
-	color:#000;
+	color:#75B3E2;
 }
 
 .topnav{
@@ -46,16 +46,25 @@ ul, li{list-style:none;}
 	text-align:center;
 	cursor:pointer;
 	background: #fff;
+	color:#75B3E2;
 }
 
 /* 마우스 오버 시 라인 색변경*/
 .subnav li:hover{
-	background:#6799FF;
+	color:#fff;
+	background:#75B3E2;
 }
 
 /* 클릭 후 적용 */
 .subnav>li>a{
-	color:#000;
+	padding:15px 17.5px 15px 17.5px;
+	color:#75B3E2;
+	text-decoration: none;
+}
+
+.subnav>li>a:HOVER{
+	padding:15px 17.5px 15px 17.5px;
+	color:#fff;
 	text-decoration: none;
 }
 

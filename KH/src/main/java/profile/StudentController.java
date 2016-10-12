@@ -28,16 +28,20 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="profile/basicForm.do",method = RequestMethod.GET)
-	public ModelAndView form(){
+	public ModelAndView form(HttpServletRequest request){
 		//@requestparam(StudentCommand command)
-		String stu_num="100101";
+		String stu_num = (String) request.getSession().getAttribute("msg");
+
 		StudentCommand command=studentDao.select(stu_num);
+		//현재 Storge에 학번이 전부 올라가 있지 않으므로 join에러가 뜸!!
+		//해결하기 위해서는 if문으로 storge 테이블에 로그인한 학번이 없을 경우는 join하지 않고 select를 사용하고
+		//있으면 join문으로 넘어가게 수정해야됨.
 		return new ModelAndView("profile/basicForm","command",command);
 		}
 	
 	@RequestMapping(value="profile/basicForm.do",method=RequestMethod.POST)
-	public ModelAndView modify(@ModelAttribute StudentCommand command){
-		String stu_num="100101";
+	public ModelAndView modify(@ModelAttribute StudentCommand command, HttpServletRequest request){
+		String stu_num = (String) request.getSession().getAttribute("msg");
 		command= new StudentCommand(stu_num,command.getP_check(),command.getMil_service(),command.getLast_rank(),command.getTour_of_duty(),command.getExemp()
 				,command.getH_phone(),command.getPhone(),command.getEn_name(),command.getAddress(),command.getH_tob(),command.getH_job(),command.getH_location(),command.getH_income());
 		
@@ -54,7 +58,7 @@ public class StudentController {
 		
 	 public String upload(MultipartFile up,HttpServletRequest request){
 		      //사진 불러올때 저장(session)
-			  String stu_num = "100101";
+		 	  String stu_num = (String) request.getSession().getAttribute("msg");
 		 	 
 		 	  String file_path=request.getServletContext().getRealPath("resources/upload/");//파일저장경로
 		      String file_name = up.getOriginalFilename();

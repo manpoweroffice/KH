@@ -30,7 +30,8 @@
 			<input type="hidden" name="m_num"/>
 			<c:forEach var="messageList" items="${messageList}">
 			<tr>
-				<td> ${messageList.m_num} </td>
+				<td><c:out value="${number}" />
+					<c:set var="number" value="${number - 1}" /></td>
 				<td> ${messageList.send} </td>
 				<td><a href="#" onClick="pop(${messageList.m_num})">${messageList.subject}</a></td>
 				<%-- <td><a href="#" onClick="window.open('message.do', 'new', 'left=100,top=0,width=690,height=434');">${messageList.subject}</a></td>
