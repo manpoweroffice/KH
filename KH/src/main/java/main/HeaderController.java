@@ -34,7 +34,7 @@ public class HeaderController {
 	
 	@RequestMapping(value="header", method=RequestMethod.POST)
 	public void messageList(HttpServletResponse resp, HttpServletRequest request) throws Exception{
-		String stu_num = (String)request.getSession().getAttribute("stu_num");
+		String stu_num = (String)request.getSession().getAttribute("msg");
 		String receive = studentdao.selectOne2(stu_num);
 		
 		int num = messagedao.selectOne3(receive);

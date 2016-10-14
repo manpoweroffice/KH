@@ -16,28 +16,46 @@ $(function(){
 			$(this).parent().find(".subnav").slideUp('fast'); //subnav에서 마우스 벗어났을 시 원위치시킴  
 		});  
 	});
-	
-    	var url="/KH/song/header.do";
-    	var params="dumi="+new Date();
-        $.ajax({
-    		type:"post" //포스트 방식
-    			,url:url	//url 주소
-    			,data:params
-    			,dataType:"json"
-            ,success : function(obj) {
-            	if(obj.data=='0'){
-            		$(".num").remove();
-            	}
-    			$(".num").append("<span class=\"badge badge-important\">"+obj.data+"</span>");
-            },
-            error : function(xhr, status, error) {
-                console.log(error);
-            }
-        });
+
     });
+    
+window.setInterval("refreshDiv()");
+function refreshDiv(){
+	document.getElementById("num").innerHTML
+	var url="/KH/song/header.do";
+	var params="dumi="+new Date();
+	$.ajax({
+		type:"post" //포스트 방식
+			,url:url	//url 주소
+			,data:params
+			,dataType:"json"
+	    ,success : function(obj) {
+	    	if(obj.data=='0'){
+	    		$(".num").remove();
+	    	}
+			$(".num span").each(function(){	//id가 city인 option요소에 적용할 반복문
+				$(".num span").remove();	//city option의 0번째 항목이 없을 때까지 0번째 항목을 지운다. (기존에 있는 것 모두 지운다.)
+			});
+	    		$(".num").append("<span class=\"badge badge-important\">"+obj.data+"</span>");
+	    },
+	    error : function(xhr, status, error) {
+	        console.log(error);
+	    }
+	});
+}
+	
+// a태그를 post방식으로 보낼때 사용.
 function pop1(stu_num){ 
 	var form = document.hearderForm;
 	form.action="/KH/gil/main/main.do";
+	form.method="post";
+	form.stu_num.value=stu_num;
+	form.submit();
+}
+
+function pop2(stu_num){ 
+	var form = document.hearderForm;
+	form.action="/KH/gil/logout/logout.do";
 	form.method="post";
 	form.stu_num.value=stu_num;
 	form.submit();
@@ -57,23 +75,23 @@ function pop1(stu_num){
 	<a data-toggle="popover" data-placement="bottom" id="example">
 			<img src="../../image/bell.jpg" id="bell"></a>
 	</div>
-	<div class="num"></div>
+	<div class="num" id="num"></div>
 	<nav>
 	    <div id="one">
 			<c:choose>
 				<c:when test="${msg.equals('admin')}">
 					<ul>
 					    <li>${msg}</li>
-					    <li><b><a href="/KH/song/main/message.do">쪽지함</a></b>
-					  	<li><a href="#">로그아웃</a></li><!--
+					    <li><a href="/KH/song/main/message.do">쪽지함</a></li>
+					  	<li><a href="#" onClick="pop2(${msg})">로그아웃</a></li><!--
 					 --><li><a href="#">사이트맵</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<ul>
 					    <li>${msg}</li>
-					    <li><b><a href="/KH/song/main/message.do">쪽지함</a></b>
-						<li><a href="#">로그아웃</a></li><!--
+					    <li><a href="/KH/song/main/message.do">쪽지함</a></li>
+						<li><a href="#" onClick="pop2(${msg})">로그아웃</a></li><!--
 					 --><li><a href="#">사이트맵</a></li>
 					</ul>
 				</c:otherwise>
@@ -104,6 +122,7 @@ function pop1(stu_num){
 					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
 					 		<ul class="subnav">
 					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
+					 			<li><a href="#">컨설팅</a></li>
 					 		</ul>
 					 	</li>
 						<li class="navi_set"><div class="topnav">취업정보</div>
@@ -134,7 +153,6 @@ function pop1(stu_num){
 					 	<li class="navi_set"><div class="topnav">자기소개서관리</div>
 					 		<ul class="subnav">
 					 			<li><a href="/KH/song/self/introduction.do">자기소개서</a></li>
-					 			<li><a href="#">컨설팅</a></li>
 					 		</ul>
 					 	</li>
 						<li class="navi_set"><div class="topnav">취업정보</div>

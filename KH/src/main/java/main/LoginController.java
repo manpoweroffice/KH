@@ -54,7 +54,16 @@ public class LoginController {
 		
 	
 	    }
-	}
+
+	@RequestMapping(value = "/logout/logout.do",method = RequestMethod.POST)
+	public String logout(@RequestParam String stu_num, HttpServletRequest request) {
+	
+		request.getSession().invalidate();
+	
+		return "logout"; 
+			//성공했을경우
+	    }
+}
 
 
 

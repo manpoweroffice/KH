@@ -29,4 +29,12 @@ public class MessageDAO extends SqlSessionDaoSupport {
 	public int update(MessageCommand messageCommand){
 		return getSqlSession().update("message.update", messageCommand);
 	}
+	
+	public int insert(MessageCommand messageCommand){
+		return getSqlSession().insert("message.insert", messageCommand);
+	}
+	
+	public int delete(int m_num){
+		return getSqlSession().delete("message.delete", m_num);
+	}
 }
