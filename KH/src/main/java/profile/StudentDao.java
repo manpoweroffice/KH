@@ -4,6 +4,9 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 public class StudentDao extends SqlSessionDaoSupport {
 
+	public StudentCommand selectAll(String stu_num){
+		return getSqlSession().selectOne("stuInfo.selectAll", stu_num);
+	}
 	public StudentCommand select(String stu_num) {
 		return getSqlSession().selectOne("stuInfo.select", stu_num);
 	}

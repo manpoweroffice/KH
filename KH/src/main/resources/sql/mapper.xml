@@ -38,6 +38,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from stu_info natural join storage where stu_num=#{stu_num}
 	</select>
 	
+	<select id="selectAll" parameterType="String" resultMap="StudentCommand">
+	select * from stu_info where stu_num=#{stu_num}
+	</select>
+	
 	<select id="selectOne2" parameterType="String" resultType="String">
 	select ko_name from stu_info where stu_num=#{stu_num}
 	</select>

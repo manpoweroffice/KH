@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
+import profile.Upload;
 @Controller
 public class StudentController {
 	
@@ -30,9 +30,15 @@ public class StudentController {
 	@RequestMapping(value="profile/basicForm.do",method = RequestMethod.GET)
 	public ModelAndView form(HttpServletRequest request){
 		//@requestparam(StudentCommand command)
+		StudentCommand command;
 		String stu_num = (String) request.getSession().getAttribute("msg");
-
-		StudentCommand command=studentDao.select(stu_num);
+		int check=studentDao.check(stu_num);
+		if(check>0){
+			command=studentDao.select(stu_num);
+		}
+		else{
+			command=studentDao.selectAll(stu_num); 
+		}
 		//현재 Storge에 학번이 전부 올라가 있지 않으므로 join에러가 뜸!!
 		//해결하기 위해서는 if문으로 storge 테이블에 로그인한 학번이 없을 경우는 join하지 않고 select를 사용하고
 		//있으면 join문으로 넘어가게 수정해야됨.
@@ -59,8 +65,8 @@ public class StudentController {
 	 public String upload(MultipartFile up,HttpServletRequest request){
 		      //사진 불러올때 저장(session)
 		 	  String stu_num = (String) request.getSession().getAttribute("msg");
-		 	 
-		 	  String file_path=request.getServletContext().getRealPath("resources/upload/");//파일저장경로
+		 	 String file_path=request.getSession().getServletContext().getRealPath("resources/upload/");
+		 	 // String file_path=request.getServletContext().getRealPath("resources/upload/");//파일저장경로
 		      String file_name = up.getOriginalFilename();
 		      String path ="/KH/resources/upload/"+up.getOriginalFilename();//db저장경로
 		      String type="증명사진";
