@@ -69,7 +69,7 @@ function pop2(stu_num){
 	<a href="#" onClick="pop1(${msg})">
 		<img alt="rogo" src="../../image/rogo2.jpg" id="rogo">
 	</a>
-	</div>
+	</div> 
 </form>
 	<div class="belldiv">
 	<a data-toggle="popover" data-placement="bottom" id="example">
