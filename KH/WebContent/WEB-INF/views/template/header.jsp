@@ -60,6 +60,15 @@ function pop2(stu_num){
 	form.stu_num.value=stu_num;
 	form.submit();
 }
+function pop3(stu_num){ 
+	var form = document.hearderForm;
+	window.open('', 'new', 'left=100,top=0,width=800,height=600');
+	form.action="/KH/yeji/certificate/certificateForm_f.do";
+	form.target="new";
+	form.method="get";
+	form.stu_num.value=stu_num;
+	form.submit();
+}
 
 </script>
 <body>
@@ -70,7 +79,7 @@ function pop2(stu_num){
 		<img alt="rogo" src="../../image/rogo2.jpg" id="rogo">
 	</a>
 	</div> 
-</form>
+
 	<div class="belldiv">
 	<a data-toggle="popover" data-placement="bottom" id="example">
 			<img src="../../image/bell.jpg" id="bell"></a>
@@ -107,7 +116,7 @@ function pop2(stu_num){
 						<div class="topnav">신상관리</div>
 						<ul class="subnav">  
 							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
-							<li><a href="/KH/yeji/certificate/certificateForm_f.do">학력정보</a></li>
+							<li><a href="#" onClick="pop3(${msg})">학력정보</a></li>
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
@@ -138,7 +147,7 @@ function pop2(stu_num){
 						<div class="topnav">신상관리</div>
 						<ul class="subnav">  
 							<li><a href="/KH/yeji/profile/basicForm.do">신상정보</a></li>
-							<li><a href="/KH/yeji/certificate/certificateForm_f.do">학력정보</a></li>
+							<li><a href="#" onClick="pop3(${msg})">학력정보</a></li>
 						</ul>
 					</li><!--
 					 --><li class="navi_set"><div class="topnav">학사관리</div>
@@ -171,4 +180,5 @@ function pop2(stu_num){
 			</div>
 	</div>
 </div>
+</form>
 </body>

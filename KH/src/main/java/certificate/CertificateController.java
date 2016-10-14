@@ -3,6 +3,8 @@ package certificate;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,8 @@ public class CertificateController {
 		this.certificateDao = certificateDao;
 	}
 	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView form(@ModelAttribute CertificateCommand command){
-		String stu_num="160101";
+	public ModelAndView form(@ModelAttribute CertificateCommand command,HttpServletRequest request){
+		 String stu_num = (String) request.getSession().getAttribute("msg");
 		command=certificateDao.select_c(stu_num);
 		String gradu_date=command.getGradu_date();
 		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd",java.util.Locale.getDefault());
