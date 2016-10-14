@@ -61,11 +61,11 @@ function pop2(stu_num){
 	form.submit();
 }
 function pop3(stu_num){ 
-	var form = document.hearderForm;
+	var form = document.menuForm;
 	window.open('', 'new', 'left=100,top=0,width=800,height=600');
 	form.action="/KH/yeji/certificate/certificateForm_f.do";
 	form.target="new";
-	form.method="get";
+	form.method="GET";
 	form.stu_num.value=stu_num;
 	form.submit();
 }
@@ -107,6 +107,9 @@ function pop3(stu_num){
 			</c:choose>
 	    </div>
 	</nav>
+</form>
+<form name="menuForm">
+<input type="hidden" name="stu_num"/>
 	<div id="wrap">
 	<div id="header">
 			<div class="nav"> 
