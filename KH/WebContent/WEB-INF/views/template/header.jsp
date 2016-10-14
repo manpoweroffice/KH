@@ -141,7 +141,11 @@ function pop2(stu_num){
 							<li><a href="/KH/yeji/certificate/certificateForm_f.do">학력정보</a></li>
 						</ul>
 					</li><!--
-					 --><li class="navi_set"><div class="topnav">학사관리</div></li><!--
+					 --><li class="navi_set"><div class="topnav">학사관리</div>
+					 	<ul class="subnav">
+					 		<li><a href="/KH/yeji/scholarship/.do">장학내역</a></li>
+					 	</ul>
+					 </li><!--
 					 --><li class="navi_set"><div class="topnav">이력관리</div>
 					 	<ul class="subnav">
 					 			<li><a href="/KH/chan/career/license.do">자격증</a></li>
