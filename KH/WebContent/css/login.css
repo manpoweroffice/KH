@@ -1,0 +1,26 @@
+.login{
+	width: 2000px;
+	height: 500px;
+}
+.index{
+	z-index: 1;
+	width: 150px;
+	position: absolute;
+	left: 42%;
+	top: 505px;
+}
+body{
+	color:#75B3E2;
+	font-weight: bold;
+}
+.button{
+	background: #75B3E2;
+	font-weight: bold;
+	color: #FFF;
+	margin: 3px;
+	padding:3px 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}

@@ -29,7 +29,7 @@ public class LoginController {
     }
  
     @RequestMapping(value = "/login/login.do",method = RequestMethod.POST)
-    public String submit(@RequestParam String stu_num,@RequestParam String pwd,HttpServletRequest request   ) {
+    public String submit(@RequestParam String stu_num,@RequestParam String pwd,HttpServletRequest request) {
     	int check = dao.checkMember(stu_num, pwd);
 
     	if(check==0){
@@ -43,7 +43,28 @@ public class LoginController {
     	}
 
         }
-    }
+    
+	@RequestMapping(value = "/main/main.do",method = RequestMethod.POST)
+	public String submit(@RequestParam String stu_num, HttpServletRequest request) {
+
+		request.getSession().setAttribute("msg", stu_num);
+	
+		return "main/main"; 
+			//성공했을경우
+		
+	
+	    }
+
+	@RequestMapping(value = "/logout/logout.do",method = RequestMethod.POST)
+	public String logout(@RequestParam String stu_num, HttpServletRequest request) {
+	
+		request.getSession().invalidate();
+	
+		return "logout"; 
+			//성공했을경우
+	    }
+}
+
 
 
 /*import java.util.ArrayList;

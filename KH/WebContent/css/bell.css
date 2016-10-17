@@ -165,14 +165,14 @@
 	z-index:10;
 	position: fixed;
 	top: 5px;
-	right: 280px;
+	right: 300px;
 }
 
 .num{
 	z-index:11;
 	position: fixed;
 	top: 5px;
-	right: 270px;
+	right: 290px;
 }
 
 /* header */

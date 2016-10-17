@@ -6,7 +6,7 @@
 
 <style>
 	.layoutTable{
-		width: 1600px;
+		width: 1100px;
 	}
 </style>
 </head>
@@ -15,9 +15,9 @@
 		<tr id="header">
 			<td colspan="2"><tiles:insertAttribute name="header" /></td>
 		</tr>
-		<tr>
-			<td width="400px"><tiles:insertAttribute name="side" /></td>
-			<td width="1200px"><tiles:insertAttribute name="main" /></td>
+		<tr height="750px">
+			<td width="300px"><tiles:insertAttribute name="side" /></td>
+			<td width="800px"><tiles:insertAttribute name="main" /></td>
 		</tr>
 		<tr>
 			<td><tiles:insertAttribute name="footer" /></td>

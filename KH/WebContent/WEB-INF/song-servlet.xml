@@ -73,5 +73,6 @@
 	<!-- 알림 -->
 	<bean id="header" class="main.HeaderController" p:messagedao-ref="messagedao" p:studentdao-ref="studentdao"/>
 	
-</beans>
+	
+	</beans>
 

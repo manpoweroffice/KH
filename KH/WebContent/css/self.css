@@ -1,0 +1,57 @@
+			section {
+				position:absolute;
+				right:0px;
+				top:105px;
+			}
+			.toolbar {
+				position: relative;
+				top: -1580;
+				left: 700;
+				line-height: 68px;
+			}
+
+			.menu-left {
+			  float: right;
+			  margin-right: 1.5em;
+			}
+
+			.sidebar {
+				background-color:#E6FFFF;
+			}
+			.sidebar .button{
+				position: relative;
+				top: 120px;
+			}
+			.table .title{
+				height: 50px;
+				width: 700px;
+				font-weight:bold;
+				padding: 0 10px;
+			}
+			.table .content{
+				height: 300px;
+				width: 700px;
+			}
+			.table .inttitle{
+				width: 90px;
+				align:center;
+				font-weight: bold;
+				background: #75B3E2;
+				color: #FFF;
+			}
+.button{
+	background: #75B3E2;
+	font-weight: bold;
+	color: #FFF;
+	margin: 3px;
+	padding:3px 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.pagetitle{
+	font-size: 50px;
+	color: #75B3E2;
+	font-weight: bold;
+}

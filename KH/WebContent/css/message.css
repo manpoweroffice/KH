@@ -1,0 +1,35 @@
+/* message.css */
+
+
+/* 모든 버튼 */
+.button{
+	background: #75B3E2; /* 배경색 */
+	font-weight: bold; /* 글씨체 굵게 */
+	color: #FFF; /* 글씨 색 */
+	margin: 3px;
+	padding:3px 10px;
+	/* 버튼 선 둥글게  */
+	border-top-left-radius: 5px; 
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+/* 기본 폰트 */
+.font{
+	color:#75B3E2;
+	font-weight: bold;
+}
+/* 타이틀부분 */
+.title{
+	color:#75B3E2;
+	font-weight: bold;
+	font-size: 30px;
+}
+/* 전송버튼 */
+.submit{
+	position: relative;
+	top : -30px;
+	left : 400px;
+	width: 30px;
+	height: 30px;
+}
