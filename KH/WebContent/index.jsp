@@ -15,5 +15,6 @@
 
 <a href="jun/register/Attend_Check.do">출석체크</a><br>
 <a href="jun/register/classbasket.do">수강신청</a>
+<a href="jun/job/scheduler.do">잡</a>
 </body>
 </html>

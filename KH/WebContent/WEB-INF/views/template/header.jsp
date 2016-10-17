@@ -79,7 +79,7 @@ $(function(){
 		});  
 	});
 	
-    	var url="/KH/song/header.do";
+    	var url="/header.do";
     	var params="dumi="+new Date();
         $.ajax({
     		type:"post" //포스트 방식

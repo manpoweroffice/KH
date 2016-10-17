@@ -109,5 +109,12 @@ public class Class_BasketBean {
 	public void setReserve_list(Reserve_ListVo reserve_list) {
 		this.reserve_list = reserve_list;
 	}
+	@Override
+	public String toString() {
+		return "Class_BasketBean [lecture_code=" + lecture_code + ", prof_code=" + prof_code + ", lecture_name="
+				+ lecture_name + ", diagnosis=" + diagnosis + ", grade=" + grade + ", time=" + time + ", prof_name="
+				+ prof_name + ", lecture_time=" + lecture_time + ", application=" + application + ", appli_limit="
+				+ appli_limit + ", reserve_list=" + reserve_list + "]";
+	}
 	
 }

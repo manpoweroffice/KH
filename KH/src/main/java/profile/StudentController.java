@@ -56,7 +56,7 @@ public class StudentController {
 		      //사진 불러올때 저장(session)
 			  String stu_num = "100101";
 		 	 
-		 	  String file_path=request.getServletContext().getRealPath("resources/upload/");//파일저장경로
+		 	  String file_path= request.getServletContext().getRealPath("resources/upload/");//파일저장경로
 		      String file_name = up.getOriginalFilename();
 		      String path ="/KH/resources/upload/"+up.getOriginalFilename();//db저장경로
 		      String type="증명사진";

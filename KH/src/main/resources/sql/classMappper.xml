@@ -27,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- 미리담기 -->
-	<insert id="insertLect" parameterType="register.Reserve_ListVo">
-		insert into reserve_list values(#{stu_num},#{lecture_code})
+	<insert id="insertReserve" parameterType="map">
+		insert into reserve_list(stu_num,lecture_code) values(#{stu_num},#{lecture_code})
 	</insert>
 	
 	
@@ -37,6 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into reg_lecture values(#{stu_num},#{stu_name},#{lecture_code},#{lecture_name},#{term})
 	</insert>
 	
+	<!-- 학생수 증가 -->
+	<update id="updateAppli" parameterType="String">
+		update lecture set application=application+1
+		where lecture_code=#{lecture_code}
+	</update>
 	<!-- 출석부 수정 -->
 	<update id="updateAttend" parameterType="register.AttendanceVo">
 		update attendance 
@@ -65,21 +70,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectMajor" parameterType="map" resultType="register.Class_BasketBean">
 		select * from LECTURE
 	<where>
-	 lecture_code like '${term}${hakcode}__' 
+	 lecture_code like '${term}${hakcode}__'  
 	 <if test="list.size()>0">
 		and lecture_code not in
 		<foreach collection="list" item="item" open="(" close=")" separator="," >
-			#{item}
+			#{item.lecture_code}
 		</foreach>
 	</if>
-	  or lecture_code like '${term}___99'
+	   or lecture_code like '${term}___99' 
 	<if test="list.size()>0">
-		and lecture_code not in
+ 	and	lecture_code not in
 		<foreach collection="list" item="item" open="(" close=")" separator="," >
-			#{item}
+			#{item.lecture_code}
 		</foreach>
 		</if>
 	</where>	
+	</select>
+	<select id="checkinsert" parameterType="map" resultType="int">
+		select count(*) from reserve_list where stu_num=#{stu_num} and lecture_code=#{lecture_code}
 	</select>
 	<!-- 미리담기 - 부전공신청 -->
 	<select id="selectMinor" parameterType="map" resultType="register.Class_BasketBean">
@@ -89,12 +97,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<if test="list.size()>0">
 		and lecture_code not in
 		<foreach collection="list" item="item" open="(" close=")" separator="," >
-			#{item}
+			#{item.lecture_code}
 		</foreach>
 		</if>	
-		or lecture_code like '${term}%' and lecture_code like '${term}___99'
+		or lecture_code like '${term}%' and lecture_code like '${term}___99' 
 		<if test="list.size()>0">
-		and lecture_code not in
+		 and lecture_code not in
 		<foreach collection="list" item="item" open="(" close=")" separator="," >
 			#{item.lecture_code}
 		</foreach>
