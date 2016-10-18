@@ -35,9 +35,11 @@ public class HeaderController {
 	@RequestMapping(value="header", method=RequestMethod.POST)
 	public void messageList(HttpServletResponse resp, HttpServletRequest request) throws Exception{
 		String stu_num = (String)request.getSession().getAttribute("msg");
+		int num=0;
+		if(stu_num!=null){
 		String receive = studentdao.selectOne2(stu_num);
-		
-		int num = messagedao.selectOne3(receive);
+		num = messagedao.selectOne3(receive);
+		}
 		
 		JSONObject jso = new JSONObject(); //JASON °´Ã¼ »ý¼º
 		jso.put("data", num);

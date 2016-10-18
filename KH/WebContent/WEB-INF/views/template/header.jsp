@@ -20,7 +20,7 @@ $(function(){
     
 window.setInterval("refreshDiv()");
 function refreshDiv(){
-	document.getElementById("num").innerHTML
+	//document.getElementById("num").innerHTML
 	var url="/KH/song/header.do";
 	var params="dumi="+new Date();
 	$.ajax({
@@ -155,6 +155,8 @@ function pop3(stu_num){
 					 --><li class="navi_set"><div class="topnav">학사관리</div>
 					 	<ul class="subnav">
 					 		<li><a href="/KH/yeji/scholarship/.do">장학내역</a></li>
+					 		<li><a href="/KH/jun/register/classbasket.do">미리담기</a></li>
+					 		<li><a href="/KH/jun/register/Class_ASK.do">수강신청</a></li>
 					 	</ul>
 					 </li><!--
 					 --><li class="navi_set"><div class="topnav">이력관리</div>
@@ -172,7 +174,7 @@ function pop3(stu_num){
 					 	</li>
 						<li class="navi_set"><div class="topnav">취업정보</div>
 							<ul class="subnav">
-					 			<li><a href="#">취업공고</a></li>
+					 			<li><a href="/KH/jun/job/scheduler.do">취업공고</a></li>
 					 			<li><a href="/KH/jun/job/business.do">기업목록</a></li>
 					 		</ul>
 						</li><!--

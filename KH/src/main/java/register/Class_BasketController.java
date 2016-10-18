@@ -63,9 +63,19 @@ public class Class_BasketController {
 	}
 	@RequestMapping(value="/register/class_basket.do",method=RequestMethod.POST)
 	public String submit(@RequestParam("lecture_code")List<String> lecture_code) {
-		
 		try{
 			classDAO.combination(stu_num,lecture_code);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "register/Class_Basket";
+	}
+	@RequestMapping(value="/register/delete.do",method=RequestMethod.POST)
+	public String submit2(@RequestParam("lecture_code")List<String> lecture_code) {
+		System.out.println("³Ñ¾î¿È»èÁ¦");
+		try{
+			classDAO.combination2(stu_num,lecture_code);
 			
 		}catch(Exception e){
 			e.printStackTrace();

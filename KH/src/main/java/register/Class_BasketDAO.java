@@ -40,6 +40,23 @@ public class Class_BasketDAO extends SqlSessionDaoSupport{
 		}
 		}	
 	}
+	//예약에 담기 및 신청 학생수 증가 트랜잭션 적용
+		public void combination2(String stu_num,List<String> lectcodeList)throws SQLException{
+			
+			HashMap<String, Object> map= new HashMap<String,Object>();
+			Iterator<String> iter= lectcodeList.iterator();
+			map.put("stu_num", stu_num);
+			while(iter.hasNext()){
+				String lecture_code=iter.next();
+				map.put("lecture_code", lecture_code);
+				int x= getSqlSession().selectOne("classMapper.checkinsert",map);
+				if(x!=0){
+			getSqlSession().delete("classMapper.deleteReserve", map);
+			getSqlSession().update("classMapper.updateAppli2", lecture_code);
+			System.out.println("업데이트끝");
+			} 
+			}	
+		}
 	public int insertReg(Reg_LectureVo reg_Lecture){
 		return getSqlSession().insert("classMapper.insertRegLect",reg_Lecture);
 	}

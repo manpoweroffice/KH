@@ -76,6 +76,7 @@
 	<bean class="util.PhotoController"></bean>
 	<bean class="register.Attend_CheckController"></bean>
 	<bean class="register.Class_BasketController" p:classDAO-ref="classDAO"></bean>
+	<bean class="register.ClassController" p:classDAO-ref="classDAO"></bean>
 	<bean id="classDAO" class="register.Class_BasketDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>

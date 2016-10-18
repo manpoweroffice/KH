@@ -16,7 +16,7 @@ public class ClassController {
 	}
 	@RequestMapping(value="/register/Class_ASK.do", method=RequestMethod.GET)
 	public String form(HttpSession session){
-		String stu_num= (String)session.getAttribute("stu_num");
+		String stu_num= (String)session.getAttribute("msg");
 		List<Class_BasketBean> list=classDAO.checklist(stu_num);
 		return "register/Class_ASK";
 	}

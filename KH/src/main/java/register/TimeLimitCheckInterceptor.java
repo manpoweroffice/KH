@@ -66,7 +66,7 @@ public class TimeLimitCheckInterceptor extends HandlerInterceptorAdapter {
 	private boolean checkTimeLimit2(){
 
 		String t1= year+"1009";
-		String t2= year+"1012";
+		String t2= year+"1020";
 		SimpleDateFormat simple= new SimpleDateFormat("yyyyMMdd");
 		Date now=new Date();
 		Date aft = null;

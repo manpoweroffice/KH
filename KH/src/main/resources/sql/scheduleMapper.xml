@@ -7,6 +7,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 insert into SCHEDULE(title,content,startevent,endevent) values(#{title},#{content},#{startevent},#{endevent})
 </insert> 
 <select id="selectList" resultType="job.SchedulerVo">
-select*from schedule
+select title,startevent,endevent from schedule
 </select>
 </mapper>

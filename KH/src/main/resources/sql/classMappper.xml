@@ -42,6 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update lecture set application=application+1
 		where lecture_code=#{lecture_code}
 	</update>
+		<update id="updateAppli2" parameterType="String">
+		update lecture set application=application-1
+		where lecture_code=#{lecture_code}
+	</update>
 	<!-- 출석부 수정 -->
 	<update id="updateAttend" parameterType="register.AttendanceVo">
 		update attendance 
@@ -59,13 +63,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where lecture_code=#{lecture_code} 
 	</update>
 	<!-- 수강신청 수강포기 -->
-	<delete id="deleteLect" parameterType="String">
-		delete reserve_list where stu_num=#{stu_num}
+	<delete id="deleteReserve" parameterType="map">
+		delete reserve_list where stu_num=#{stu_num} and lecture_code=#{lecture_code}
 	</delete>
-	<!-- 학기가 지나면 삭제 -->
-	<delete id="deleteRegLect" parameterType="String">
-		delete reg_lecturce where term=#{term}
-	</delete>
+
 	<!-- 미리담기 -전공신청 -->
 	<select id="selectMajor" parameterType="map" resultType="register.Class_BasketBean">
 		select * from LECTURE
