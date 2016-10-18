@@ -2,4 +2,5 @@
 <script>
 
 window.close();
+opener.location.reload()
 </script>

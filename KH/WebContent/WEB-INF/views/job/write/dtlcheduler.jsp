@@ -30,24 +30,28 @@
 </script>
 </head>
 <body>
-<form:form>
+<script>
+
+</script>
+<form:form action="/KH/jun/job/dtlschedule.do">
 <table>
 <tr><td>
-회사명 : <input type="text" name="title">
+회사명 : <input type="text" name="title" value="${schedule.title}">
 </td></tr>
 <tr><td>
 공고 내용 </td>
 </tr>
 <tr>
 <td>
-<textarea name="content" cols="70" rows="30"></textarea>
+<textarea name="content" cols="70" rows="30">${schedule.content}</textarea>
 </td></tr>
 <tr>
-<td>모집날짜 <input type="text" id="start"name="startevent" value="${start}"> ~ <input type="text" id="end"name="endevent" value="${start}"></td>
+<td>모집날짜 <input type="text" id="start"name="startevent" value="${schedule.startevent}"> ~ <input type="text" id="end"name="endevent" value="${schedule.endevent}"></td>
 </tr>
 </table>
 <div align="center">
-<input type="submit" value="확인">
+<input type="submit" value="수정">
+<input type="button" value="삭제" onclick="location.href='/KH/jun/job/deleteSchedule.do?title=${schedule.title}'">
 <input type="button" value="닫기" onclick="window.close()">
 </div>
 </form:form>

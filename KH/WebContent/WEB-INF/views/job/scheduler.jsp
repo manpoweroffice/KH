@@ -11,9 +11,16 @@
 <script src='../resources/js/fullcalendar.min.js'></script>
 <script src='../resources/js/locale-all.js'></script>
 <script>
+Date.prototype.yyyymmdd = function()
+{
+    var yyyy = this.getFullYear().toString();
+    var mm = (this.getMonth() + 1).toString();
+    var dd = this.getDate().toString();
 
+
+    return yyyy +'-'+ (mm[1] ? mm : '0'+mm[0]) +'-'+ (dd[1] ? dd : '0'+dd[0]);
+}
 	$(document).ready(function() {
-		
 		$.ajax({
             url:'/KH/jun/job/scheduleList.do',
             type:'post',
@@ -38,12 +45,14 @@
 			navLinks: false, // can click day/week names to navigate views
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
-			dayClick: function(date) {
-					
-				  window.open("/KH/jun/job/writescheduler.do","일정등록","toolbar=no,location=no,menubar=no,scrollbars=no,resizable=no,width=600,height=700");
-					
+			dayClick: function(start,date) {
+					str=new Date(start);
+				  window.open("/KH/jun/job/writescheduler.do?start="+str.yyyymmdd(),"일정등록","toolbar=no,location=no,menubar=no,scrollbars=no,resizable=yes,width=600,height=700");
 			 },
-			    events: eval(data)
+			events: eval(data),
+			eventClick:function(calEvent,jsEvent,view){
+				 window.open("/KH/jun/job/dtlschedule.do?title="+calEvent.title,"일정수정","toolbar=no,location=no,menubar=no,scrollbars=no,resizable=yes,width=600,height=700");
+			}
 		});
 	}
 </script>
@@ -66,43 +75,6 @@
 <body>
 
 	<div id='calendar'></div>
-<!-- 스케줄등록모달 -->
-	<div id="writeModal" class="msgbox" style="display: none;">
-		<div class="head">
-			<span>등록 폼</span>
-	    </div>
-		<div class="body">
-			<table>
-				<tr>
-					<td>
-						<input class="input input-rect" id="title" name="title" style="width: 612px" maxlength="100" placeholder="제목"/>
-					</td>
-				</tr>
-				<tr>
-					<td style="border-spacing: 0px;border-collapse: 0px;border: 1px solid #BEBeBe;">
-						<span id="schedulefileName"></span>
-						<div id="scheduleFiles">
-							<input type="file" name="schedulefile" id="schedulefile"><br>
-							<a href="#" id="scheduleFileAddBtn" class="btn btn-gray btn-small">파일등록</a>(파일선택 후 등록해야 글 저장시 함께 등록 됩니다.)
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td style="border-spacing: 0px;border-collapse: 0px;height:25px;border: 1px solid #BEBeBe;">
-						공유 여부 : <input type="checkbox" id="etcYn"><font color="red">(체크시 Etc 에 표시 되지 않습니다.)</font>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<textarea class="input" id="contents" name="contents" style="width: 610px;height: 300px;" placeholder="내용"></textarea>
-					</td>
-				</tr>
-			</table>
-			<div style="text-align: center;">
-				<a href="#" id="writeBtn" class="btn btn-gray btn-small">저장</a>
-				<a href="#" id="writeClose" class="btn btn-gray btn-small">Close</a>
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>

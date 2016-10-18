@@ -6,7 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="insert" parameterType="job.SchedulerVo">
 insert into SCHEDULE(title,content,startevent,endevent) values(#{title},#{content},#{startevent},#{endevent})
 </insert> 
+<update id="update" parameterType="job.SchedulerVo">
+update schedule set title=#{title},content=#{content},startevent=#{startevent},endevent=#{endevent}
+</update>
+<delete id="delete" parameterType="String">
+delete from schedule where title=#{title}
+</delete>
 <select id="selectList" resultType="job.SchedulerVo">
 select title,startevent,endevent from schedule
+</select>
+<select id="dtlSchedule" parameterType="String" resultType="job.SchedulerVo">
+select *from schedule where title=#{title}
 </select>
 </mapper>
